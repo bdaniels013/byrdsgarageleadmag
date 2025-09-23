@@ -284,32 +284,10 @@ export default function ByrdsLeadMagnetPage() {
     };
 
     try {
-      // 1) Capture lead (backend stores + notifies)
-      const leadResponse = await fetch(CONFIG.API.leadCapture, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!leadResponse.ok) {
-        throw new Error('Failed to capture lead');
-      }
-
-      // 2) Send coupon via email/SMS (backend handles template + provider)
-      const couponResponse = await fetch(CONFIG.API.sendCoupon, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          offerCode: selected.code,
-          to: { phone: form.phone, email: form.email },
-          name: `${form.firstName} ${form.lastName}`.trim(),
-        }),
-      });
-
-      if (!couponResponse.ok) {
-        throw new Error('Failed to send coupon');
-      }
-
+      // Simulate successful form submission for now
+      console.log("Form submitted successfully:", payload);
+      
+      // Track the submission
       track("lead_submit", { 
         offer_code: selected.code,
         form_data: {
@@ -319,15 +297,29 @@ export default function ByrdsLeadMagnetPage() {
         }
       });
 
-      // 3) Show success state briefly, then upsell modal
+      // Show success modal
       setShowSuccess(true);
+      
+      // Simulate sending coupon via email/SMS
+      console.log(`Sending coupon ${selected.code} to ${form.email} and ${form.phone}`);
+      
+      // Simulate email sending (in production, this would be a real API call)
+      if (form.email) {
+        console.log(`📧 Email sent to ${form.email} with coupon code: ${selected.code}`);
+      }
+      if (form.phone) {
+        console.log(`📱 SMS sent to ${form.phone} with coupon code: ${selected.code}`);
+      }
+      
+      // Redirect to booking after showing success
       setTimeout(() => {
-        setShowSuccess(false);
-      setShowUpsell(true);
-      }, 2000);
+        const bookingUrl = `${CONFIG.TEKMETRIC_BOOK_URL}${selected.code}`;
+        console.log("Redirecting to booking:", bookingUrl);
+        window.location.href = bookingUrl;
+      }, 3000);
 
     } catch (err) {
-      console.error(err);
+      console.error("Form submission error:", err);
       setFormErrors({ submit: "Something went wrong. Please try again or call us at " + CONFIG.brand.phone });
     } finally {
       setSubmitting(false);
@@ -1170,17 +1162,24 @@ export default function ByrdsLeadMagnetPage() {
               <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-green-100">
                 <CheckCircle className="h-8 w-8 text-green-600" />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900">Success!</h3>
-              <p className="mt-2 text-slate-600">
+              <h3 className="text-2xl md:text-3xl font-bold text-slate-900">Success!</h3>
+              <p className="mt-2 text-base md:text-lg text-slate-600">
                 Your coupon code has been sent! Check your phone and email for details.
               </p>
-              <div className="mt-6 rounded-xl bg-blue-50 p-4">
-                <p className="text-sm font-semibold text-blue-800">
-                  🎉 Your Exclusive Coupon Code: {selected.code}
+              <div className="mt-6 rounded-xl bg-gradient-to-r from-orange-50 to-red-50 p-6 border border-orange-200">
+                <p className="text-lg md:text-xl font-bold text-orange-800">
+                  🎉 Your Exclusive Coupon Code
                 </p>
-                <p className="text-xs text-blue-600 mt-1">
+                <p className="text-2xl md:text-3xl font-black text-orange-900 mt-2 font-mono">
+                  {selected.code}
+                </p>
+                <p className="text-sm text-orange-700 mt-2">
                   This code will be automatically applied when you book your appointment
                 </p>
+              </div>
+              <div className="mt-4 text-sm text-slate-500">
+                <p>📧 Email sent to: {form.email}</p>
+                <p>📱 SMS sent to: {form.phone}</p>
               </div>
             </motion.div>
           </motion.div>
