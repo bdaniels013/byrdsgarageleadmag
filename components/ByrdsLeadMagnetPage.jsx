@@ -435,22 +435,22 @@ export default function ByrdsLeadMagnetPage() {
       <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-500/5 rounded-full blur-2xl animate-pulse"></div>
       
       <header className="relative z-50 border-b border-orange-500/20 bg-black/90 backdrop-blur-2xl">
-        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
-          <div className="flex items-center gap-6">
+        <div className="mx-auto flex h-16 md:h-24 max-w-7xl items-center justify-between px-4 md:px-8">
+          <div className="flex items-center gap-3 md:gap-6">
             <div className="relative group">
-              <div className="grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl shadow-orange-500/50 group-hover:shadow-orange-500/75 transition-all duration-300">
-                <Wrench className="h-10 w-10" />
+              <div className="grid h-12 w-12 md:h-20 md:w-20 place-items-center rounded-2xl md:rounded-3xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl shadow-orange-500/50 group-hover:shadow-orange-500/75 transition-all duration-300">
+                <Wrench className="h-6 w-6 md:h-10 md:w-10" />
               </div>
-              <div className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg">
-                <CheckCircle className="h-4 w-4 text-white" />
+              <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 h-5 w-5 md:h-8 md:w-8 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg">
+                <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-white" />
               </div>
-              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+              <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </div>
-            <div>
-              <h1 className="text-3xl font-black text-white tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <div className="min-w-0 flex-1">
+              <h1 className="text-lg md:text-3xl font-black text-white tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent truncate">
                 {CONFIG.brand.name}
               </h1>
-              <div className="flex items-center gap-4 text-sm mt-2">
+              <div className="hidden md:flex items-center gap-4 text-sm mt-2">
                 <div className="flex items-center gap-2 bg-yellow-500/20 px-3 py-1 rounded-full">
                   <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
@@ -461,8 +461,31 @@ export default function ByrdsLeadMagnetPage() {
                 <div className="h-5 w-px bg-gray-600"></div>
                 <span className="text-green-400 font-bold bg-green-500/20 px-3 py-1 rounded-full">✓ ASE Certified</span>
               </div>
+              {/* Mobile trust signals */}
+              <div className="md:hidden flex items-center gap-2 text-xs mt-1">
+                <div className="flex items-center gap-1 bg-yellow-500/20 px-2 py-1 rounded-full">
+                  <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                  <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
+                </div>
+                <span className="text-gray-400">•</span>
+                <span className="text-green-400 font-bold text-xs">ASE Certified</span>
+              </div>
             </div>
           </div>
+          
+          {/* Mobile CTA Button */}
+          <div className="md:hidden">
+            <a
+              href="#lead"
+              className="group relative inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 px-4 py-3 text-sm font-black text-white shadow-xl shadow-orange-500/50"
+            >
+              <Percent className="h-4 w-4" />
+              <span className="hidden xs:inline">CLAIM FREE</span>
+              <span className="xs:hidden">FREE</span>
+            </a>
+          </div>
+          
+          {/* Desktop Navigation */}
           <div className="hidden items-center gap-8 md:flex">
             <div className="text-right bg-gray-800/50 px-6 py-3 rounded-2xl backdrop-blur-sm border border-gray-700/50">
               <div className="flex items-center gap-3 text-gray-200">
@@ -495,32 +518,33 @@ export default function ByrdsLeadMagnetPage() {
           <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(255,140,0,0.08)_60deg,transparent_120deg)]"></div>
           
           {/* Animated Grid Overlay */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.1)_1px,transparent_1px)] bg-[size:60px_60px] animate-pulse"></div>
+          <div className="absolute inset-0 opacity-20 md:opacity-30">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.1)_1px,transparent_1px)] bg-[size:40px_40px] md:bg-[size:60px_60px] animate-pulse"></div>
           </div>
           
-          {/* Floating Geometric Shapes */}
-          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-red-500/5 rounded-full blur-2xl animate-bounce"></div>
-          <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-yellow-500/10 rounded-full blur-xl animate-pulse"></div>
+          {/* Floating Geometric Shapes - Hidden on mobile for performance */}
+          <div className="hidden md:block absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="hidden md:block absolute top-1/3 right-1/4 w-48 h-48 bg-red-500/5 rounded-full blur-2xl animate-bounce"></div>
+          <div className="hidden md:block absolute bottom-1/4 left-1/3 w-32 h-32 bg-yellow-500/10 rounded-full blur-xl animate-pulse"></div>
           
-          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-20 px-8 py-32 md:grid-cols-2">
-            <div className="space-y-12">
-              <div className="space-y-8">
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 md:gap-20 px-4 md:px-8 py-16 md:py-32 md:grid-cols-2">
+            <div className="space-y-8 md:space-y-12">
+              <div className="space-y-6 md:space-y-8">
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 px-8 py-4 text-base font-bold text-orange-300 backdrop-blur-md shadow-lg"
+                  className="inline-flex items-center gap-3 md:gap-4 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 px-4 py-3 md:px-8 md:py-4 text-sm md:text-base font-bold text-orange-300 backdrop-blur-md shadow-lg"
                 >
-                  <Award className="h-6 w-6" />
-                  Trusted by {CONFIG.trustSignals.customersServed}+ Elverta Customers
+                  <Award className="h-5 w-5 md:h-6 md:w-6" />
+                  <span className="hidden sm:inline">Trusted by {CONFIG.trustSignals.customersServed}+ Elverta Customers</span>
+                  <span className="sm:hidden">{CONFIG.trustSignals.customersServed}+ Customers</span>
                 </motion.div>
                 
                 <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-6xl font-black tracking-tight text-white md:text-8xl leading-tight"
+                  className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black tracking-tight text-white leading-tight"
                 >
                   FREE Digital
                   <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
@@ -532,7 +556,7 @@ export default function ByrdsLeadMagnetPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-2xl text-gray-200 md:text-3xl leading-relaxed font-medium"
+                  className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-medium"
                 >
                   Get a <span className="font-bold text-orange-400 bg-orange-500/20 px-2 py-1 rounded">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
                 </motion.p>
@@ -543,33 +567,33 @@ export default function ByrdsLeadMagnetPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="grid gap-6"
+                className="grid gap-4 md:gap-6"
               >
-                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 shadow-xl">
-                    <CheckCircle className="h-8 w-8 text-white" />
+                <div className="flex items-center gap-4 md:gap-6 text-gray-200 bg-gray-800/50 p-4 md:p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 shadow-xl">
+                    <CheckCircle className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
-                  <div>
-                    <span className="font-bold text-white text-lg">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
-                    <div className="text-base text-gray-300 mt-1">on all approved repairs</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl">
-                    <ClipboardList className="h-8 w-8 text-white" />
-                  </div>
-                  <div>
-                    <span className="font-bold text-white text-lg">Digital photo report</span>
-                    <div className="text-base text-gray-300 mt-1">with detailed vehicle health score</div>
+                  <div className="min-w-0 flex-1">
+                    <span className="font-bold text-white text-base md:text-lg">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
+                    <div className="text-sm md:text-base text-gray-300 mt-1">on all approved repairs</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-red-600 shadow-xl">
-                    <Wrench className="h-8 w-8 text-white" />
+                <div className="flex items-center gap-4 md:gap-6 text-gray-200 bg-gray-800/50 p-4 md:p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl">
+                    <ClipboardList className="h-6 w-6 md:h-8 md:w-8 text-white" />
                   </div>
-                  <div>
-                    <span className="font-bold text-white text-lg">Professional diagnostic</span>
-                    <div className="text-base text-gray-300 mt-1">available for warning lights ($165)</div>
+                  <div className="min-w-0 flex-1">
+                    <span className="font-bold text-white text-base md:text-lg">Digital photo report</span>
+                    <div className="text-sm md:text-base text-gray-300 mt-1">with detailed vehicle health score</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 md:gap-6 text-gray-200 bg-gray-800/50 p-4 md:p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-red-600 shadow-xl">
+                    <Wrench className="h-6 w-6 md:h-8 md:w-8 text-white" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className="font-bold text-white text-base md:text-lg">Professional diagnostic</span>
+                    <div className="text-sm md:text-base text-gray-300 mt-1">available for warning lights ($165)</div>
                   </div>
                 </div>
               </motion.div>
@@ -579,25 +603,25 @@ export default function ByrdsLeadMagnetPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="rounded-3xl bg-gray-800/60 border border-gray-700/60 p-8 backdrop-blur-md shadow-xl"
+                className="rounded-2xl md:rounded-3xl bg-gray-800/60 border border-gray-700/60 p-4 md:p-8 backdrop-blur-md shadow-xl"
               >
-                <div className="grid gap-6 md:grid-cols-2">
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
-                      <MapPin className="h-7 w-7 text-white" />
+                <div className="grid gap-4 md:gap-6 md:grid-cols-2">
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
+                      <MapPin className="h-5 w-5 md:h-7 md:w-7 text-white" />
                     </div>
-                    <div>
-                      <div className="font-bold text-white text-lg">Location</div>
-                      <div className="text-base text-gray-300 mt-1">{CONFIG.brand.address}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-bold text-white text-base md:text-lg">Location</div>
+                      <div className="text-sm md:text-base text-gray-300 mt-1">{CONFIG.brand.address}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-4">
-                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
-                      <Clock className="h-7 w-7 text-white" />
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
+                      <Clock className="h-5 w-5 md:h-7 md:w-7 text-white" />
                     </div>
-                    <div>
-                      <div className="font-bold text-white text-lg">Hours</div>
-                      <div className="text-base text-gray-300 mt-1">{CONFIG.brand.hours}</div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-bold text-white text-base md:text-lg">Hours</div>
+                      <div className="text-sm md:text-base text-gray-300 mt-1">{CONFIG.brand.hours}</div>
                     </div>
                   </div>
                 </div>
@@ -628,7 +652,7 @@ export default function ByrdsLeadMagnetPage() {
             </div>
 
             {/* Offer cards */}
-            <div className="grid content-start gap-6">
+            <div className="grid content-start gap-4 md:gap-6">
               {OFFERS.map((o) => (
                 <motion.button
                   key={o.code}
@@ -636,41 +660,41 @@ export default function ByrdsLeadMagnetPage() {
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className={cx(
-                    "group relative flex w-full items-start gap-6 rounded-3xl border-2 p-8 text-left transition-all duration-300 backdrop-blur-sm",
+                    "group relative flex w-full items-start gap-4 md:gap-6 rounded-2xl md:rounded-3xl border-2 p-4 md:p-8 text-left transition-all duration-300 backdrop-blur-sm",
                     selected.code === o.code 
                       ? "border-orange-500 bg-gradient-to-br from-orange-500/20 to-red-500/20 shadow-2xl shadow-orange-500/25" 
                       : "border-slate-700/50 bg-slate-800/30 hover:border-orange-500/50 hover:bg-slate-800/50 hover:shadow-xl"
                   )}
                 >
                   {o.popular && (
-                    <div className="absolute -top-3 left-6 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 text-xs font-bold text-white shadow-lg">
+                    <div className="absolute -top-2 md:-top-3 left-4 md:left-6 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-3 py-1 md:px-4 md:py-2 text-xs font-bold text-white shadow-lg">
                       ⭐ MOST POPULAR
                     </div>
                   )}
                   
                   <div className={cx(
-                    "flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-lg",
+                    "flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-lg",
                     selected.code === o.code 
                       ? "bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-orange-500/50" 
                       : "bg-gradient-to-br from-slate-700 to-slate-800 text-slate-300 group-hover:from-orange-500 group-hover:to-red-500 group-hover:text-white"
                   )}>
-                    <o.icon className="h-8 w-8" />
+                    <o.icon className="h-6 w-6 md:h-8 md:w-8" />
                   </div>
                   
-                  <div className="flex-1 space-y-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="space-y-2">
-                        <h3 className="text-xl font-bold text-white">{o.name}</h3>
-                        <p className="text-slate-300">{o.short}</p>
+                  <div className="flex-1 space-y-3 md:space-y-4 min-w-0">
+                    <div className="flex items-start justify-between gap-3 md:gap-4">
+                      <div className="space-y-1 md:space-y-2 min-w-0 flex-1">
+                        <h3 className="text-lg md:text-xl font-bold text-white leading-tight">{o.name}</h3>
+                        <p className="text-sm md:text-base text-slate-300 leading-relaxed">{o.short}</p>
                       </div>
-                      <div className="text-right">
-                        <div className="text-sm text-slate-500 line-through">{o.value}</div>
-                        <div className="text-2xl font-black text-green-400">FREE</div>
+                      <div className="text-right flex-shrink-0">
+                        <div className="text-xs md:text-sm text-slate-500 line-through">{o.value}</div>
+                        <div className="text-xl md:text-2xl font-black text-green-400">FREE</div>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-3">
-                      <span className="rounded-full bg-slate-700/50 px-4 py-2 text-sm font-mono font-bold text-slate-300 border border-slate-600">
+                    <div className="flex items-center gap-2 md:gap-3">
+                      <span className="rounded-full bg-slate-700/50 px-3 py-1 md:px-4 md:py-2 text-xs md:text-sm font-mono font-bold text-slate-300 border border-slate-600">
                         🔒 Code Hidden
                       </span>
                       {selected.code === o.code && (
@@ -692,36 +716,37 @@ export default function ByrdsLeadMagnetPage() {
         </section>
 
         {/* Lead capture */}
-        <section id="lead" className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%220%200%2040%2040%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M20%2020c0-11.046-8.954-20-20-20v20h20z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <section id="lead" className="relative bg-gradient-to-br from-gray-900 via-black to-gray-900">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,140,0,0.1),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(255,140,0,0.05)_60deg,transparent_120deg)]"></div>
           
-          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-2">
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-12 md:gap-16 px-4 md:px-6 py-16 md:py-24 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              <div className="rounded-3xl border border-slate-700/50 bg-slate-800/50 p-10 shadow-2xl backdrop-blur-sm">
-                <div className="flex items-start gap-6">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-lg">
-                    <Percent className="h-8 w-8" />
+              <div className="rounded-2xl md:rounded-3xl border border-gray-700/50 bg-gray-800/50 p-6 md:p-10 shadow-2xl backdrop-blur-sm">
+                <div className="flex items-start gap-4 md:gap-6">
+                  <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-lg">
+                    <Percent className="h-6 w-6 md:h-8 md:w-8" />
                   </div>
-                  <div>
-                    <h3 className="text-3xl font-black text-white">Claim Your Free Offer</h3>
-                    <p className="mt-3 text-lg text-slate-300">
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-2xl md:text-3xl font-black text-white">Claim Your Free Offer</h3>
+                    <p className="mt-3 text-base md:text-lg text-gray-300 leading-relaxed">
                       Enter your information below to reveal your exclusive coupon code. We'll send it by text/email and take you to booking with the code automatically applied.
                     </p>
                   </div>
                 </div>
 
-                <form ref={formRef} onSubmit={handleSubmit} className="mt-10 grid gap-8">
-                  <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                <form ref={formRef} onSubmit={handleSubmit} className="mt-8 md:mt-10 grid gap-6 md:gap-8">
+                  <div className="grid grid-cols-1 gap-6 md:gap-8 sm:grid-cols-2">
                     <div className="space-y-3">
                       <label className="text-sm font-bold text-white uppercase tracking-wide">
                         First name *
                       </label>
                       <input
                         className={cx(
-                          "w-full rounded-2xl border px-6 py-4 text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 bg-slate-700/50 backdrop-blur-sm",
+                          "w-full rounded-2xl border px-4 md:px-6 py-3 md:py-4 text-white placeholder-gray-400 transition-all focus:outline-none focus:ring-2 bg-gray-700/50 backdrop-blur-sm text-base",
                           formErrors.firstName 
                             ? "border-red-500 bg-red-500/20 focus:ring-red-500" 
-                            : "border-slate-600 focus:ring-orange-500 hover:border-orange-500/50"
+                            : "border-gray-600 focus:ring-orange-500 hover:border-orange-500/50"
                         )}
                         value={form.firstName}
                         onChange={(e) => setForm((s) => ({ ...s, firstName: e.target.value }))}
@@ -737,12 +762,12 @@ export default function ByrdsLeadMagnetPage() {
                       )}
                     </div>
                     
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-slate-700">
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-white uppercase tracking-wide">
                         Last name
                     </label>
                       <input
-                        className="w-full rounded-xl border border-slate-300 px-4 py-3 text-slate-900 placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-2xl border px-4 md:px-6 py-3 md:py-4 text-white placeholder-gray-400 transition-all focus:outline-none focus:ring-2 bg-gray-700/50 backdrop-blur-sm text-base border-gray-600 focus:ring-orange-500 hover:border-orange-500/50"
                         value={form.lastName}
                         onChange={(e) => setForm((s) => ({ ...s, lastName: e.target.value }))}
                         placeholder="Enter your last name"
@@ -751,18 +776,18 @@ export default function ByrdsLeadMagnetPage() {
                     </div>
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-white uppercase tracking-wide">
                       Mobile phone *
                     </label>
                     <div className="relative">
-                      <Phone className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      <Phone className="absolute left-4 md:left-6 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-gray-400" />
                       <input
                         className={cx(
-                          "w-full rounded-xl border pl-12 pr-4 py-3 text-slate-900 placeholder-slate-400 transition-all focus:outline-none focus:ring-2",
+                          "w-full rounded-2xl border pl-12 md:pl-14 pr-4 md:pr-6 py-3 md:py-4 text-white placeholder-gray-400 transition-all focus:outline-none focus:ring-2 bg-gray-700/50 backdrop-blur-sm text-base",
                           formErrors.phone 
-                            ? "border-red-300 bg-red-50 focus:ring-red-500" 
-                            : "border-slate-300 focus:ring-blue-500"
+                            ? "border-red-500 bg-red-500/20 focus:ring-red-500" 
+                            : "border-gray-600 focus:ring-orange-500 hover:border-orange-500/50"
                         )}
                         value={form.phone}
                         onChange={(e) => setForm((s) => ({ ...s, phone: e.target.value }))}
@@ -773,25 +798,25 @@ export default function ByrdsLeadMagnetPage() {
                       />
                     </div>
                     {formErrors.phone && (
-                      <p className="flex items-center gap-1 text-xs text-red-600">
-                        <AlertCircle className="h-3 w-3" />
+                      <p className="flex items-center gap-2 text-sm text-red-400">
+                        <AlertCircle className="h-4 w-4" />
                         {formErrors.phone}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-white uppercase tracking-wide">
                       Email address
                   </label>
                     <div className="relative">
-                      <Mail className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      <Mail className="absolute left-4 md:left-6 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-gray-400" />
                       <input
                         className={cx(
-                          "w-full rounded-xl border pl-12 pr-4 py-3 text-slate-900 placeholder-slate-400 transition-all focus:outline-none focus:ring-2",
+                          "w-full rounded-2xl border pl-12 md:pl-14 pr-4 md:pr-6 py-3 md:py-4 text-white placeholder-gray-400 transition-all focus:outline-none focus:ring-2 bg-gray-700/50 backdrop-blur-sm text-base",
                           formErrors.email 
-                            ? "border-red-300 bg-red-50 focus:ring-red-500" 
-                            : "border-slate-300 focus:ring-blue-500"
+                            ? "border-red-500 bg-red-500/20 focus:ring-red-500" 
+                            : "border-gray-600 focus:ring-orange-500 hover:border-orange-500/50"
                         )}
                         value={form.email}
                         onChange={(e) => setForm((s) => ({ ...s, email: e.target.value }))}
@@ -801,21 +826,21 @@ export default function ByrdsLeadMagnetPage() {
                       />
                     </div>
                     {formErrors.email && (
-                      <p className="flex items-center gap-1 text-xs text-red-600">
-                        <AlertCircle className="h-3 w-3" />
+                      <p className="flex items-center gap-2 text-sm text-red-400">
+                        <AlertCircle className="h-4 w-4" />
                         {formErrors.email}
                       </p>
                     )}
                   </div>
 
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-slate-700">
+                  <div className="space-y-3">
+                    <label className="text-sm font-bold text-white uppercase tracking-wide">
                       Vehicle (Year / Make / Model)
                   </label>
                     <div className="relative">
-                      <CarIcon className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400" />
+                      <Car className="absolute left-4 md:left-6 top-1/2 h-4 w-4 md:h-5 md:w-5 -translate-y-1/2 text-gray-400" />
                     <input
-                        className="w-full rounded-xl border border-slate-300 pl-12 pr-4 py-3 text-slate-900 placeholder-slate-400 transition-all focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full rounded-2xl border pl-12 md:pl-14 pr-4 md:pr-6 py-3 md:py-4 text-white placeholder-gray-400 transition-all focus:outline-none focus:ring-2 bg-gray-700/50 backdrop-blur-sm text-base border-gray-600 focus:ring-orange-500 hover:border-orange-500/50"
                       value={form.vehicle}
                       onChange={(e) => setForm((s) => ({ ...s, vehicle: e.target.value }))}
                       placeholder="e.g., 2018 Honda Accord"
