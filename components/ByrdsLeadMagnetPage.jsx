@@ -418,40 +418,55 @@ export default function ByrdsLeadMagnetPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white text-slate-900">
-      <header className="sticky top-0 z-40 border-b bg-white/95 backdrop-blur-md shadow-sm">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
-          <div className="flex items-center gap-3">
-            <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 text-white shadow-lg">
-              <Wrench className="h-6 w-6" />
+    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
+      {/* Hero Background with Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.03"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+      
+      <header className="relative z-40 border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-xl">
+        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl">
+                <Wrench className="h-8 w-8" />
+              </div>
+              <div className="absolute -top-1 -right-1 h-6 w-6 rounded-full bg-green-500 flex items-center justify-center">
+                <CheckCircle className="h-3 w-3 text-white" />
+              </div>
             </div>
             <div>
-              <p className="text-lg font-bold text-slate-900">{CONFIG.brand.name}</p>
-              <div className="flex items-center gap-2 text-xs text-slate-600">
-                <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold">{CONFIG.trustSignals.googleRating}</span>
-                <span>({CONFIG.trustSignals.totalReviews} reviews)</span>
-                <span>•</span>
-                <span>{CONFIG.brand.established}</span>
+              <h1 className="text-2xl font-black text-white tracking-tight">{CONFIG.brand.name}</h1>
+              <div className="flex items-center gap-3 text-sm">
+                <div className="flex items-center gap-1">
+                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
+                  <span className="text-slate-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
+                </div>
+                <div className="h-4 w-px bg-slate-600"></div>
+                <span className="text-slate-300">Since {CONFIG.brand.established}</span>
+                <div className="h-4 w-px bg-slate-600"></div>
+                <span className="text-green-400 font-semibold">✓ ASE Certified</span>
               </div>
             </div>
           </div>
-          <div className="hidden items-center gap-6 md:flex">
-            <div className="flex items-center gap-2 text-sm text-slate-600">
-              <Phone className="h-4 w-4" /> 
-              <a href={`tel:${CONFIG.brand.phone}`} className="hover:text-blue-600 font-medium">
-                {CONFIG.brand.phone}
-              </a>
-            </div>
-            <div className="hidden items-center gap-2 text-sm text-slate-600 lg:flex">
-              <Clock className="h-4 w-4" /> {CONFIG.brand.hours}
+          <div className="hidden items-center gap-8 md:flex">
+            <div className="text-right">
+              <div className="flex items-center gap-2 text-slate-300">
+                <Phone className="h-4 w-4" /> 
+                <a href={`tel:${CONFIG.brand.phone}`} className="font-bold text-white hover:text-orange-400 transition-colors">
+                  {CONFIG.brand.phone}
+                </a>
+              </div>
+              <div className="text-xs text-slate-400 mt-1">{CONFIG.brand.hours}</div>
             </div>
             <a
               href="#lead"
-              className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200"
+              className="group relative inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 text-sm font-bold text-white shadow-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
             >
-              <Percent className="h-4 w-4" />
-              Claim Free Offer
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+              <Percent className="h-5 w-5" />
+              <span>CLAIM FREE INSPECTION</span>
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
@@ -459,36 +474,42 @@ export default function ByrdsLeadMagnetPage() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 md:grid-cols-2 md:py-20">
-            <div className="space-y-8">
-              <div className="space-y-4">
+        <section className="relative overflow-hidden">
+          {/* Professional Shop Background */}
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Cpath d="M50 0L60 40L100 50L60 60L50 100L40 60L0 50L40 40z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+          
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-2 md:py-32">
+            <div className="space-y-10">
+              <div className="space-y-6">
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-2 rounded-full bg-blue-100 px-4 py-2 text-sm font-semibold text-blue-800"
+                  className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 px-6 py-3 text-sm font-bold text-orange-300 backdrop-blur-sm"
                 >
-                  <Award className="h-4 w-4" />
-                  Trusted by {CONFIG.trustSignals.customersServed}+ Customers
+                  <Award className="h-5 w-5" />
+                  Trusted by {CONFIG.trustSignals.customersServed}+ Elverta Customers
                 </motion.div>
                 
-              <motion.h1
+                <motion.h1
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-4xl font-extrabold tracking-tight text-slate-900 md:text-6xl"
+                  className="text-5xl font-black tracking-tight text-white md:text-7xl"
                 >
-                  Free Digital Vehicle
-                  <span className="bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"> Inspection</span>
+                  FREE Digital Vehicle
+                  <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
+                    Inspection
+                  </span>
                 </motion.h1>
                 
                 <motion.p
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-lg text-slate-700 md:text-xl"
+                  className="text-xl text-slate-300 md:text-2xl leading-relaxed"
                 >
-                  Get a <strong>FREE 90‑point digital inspection</strong> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
+                  Get a <span className="font-bold text-orange-400">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
                 </motion.p>
               </div>
 
@@ -497,25 +518,34 @@ export default function ByrdsLeadMagnetPage() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="grid gap-3"
+                className="grid gap-4"
               >
-                <div className="flex items-center gap-3 text-sm text-slate-700">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-green-100">
-                    <CheckCircle className="h-4 w-4 text-green-600" />
+                <div className="flex items-center gap-4 text-slate-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 shadow-lg">
+                    <CheckCircle className="h-6 w-6 text-white" />
                   </div>
-                  <span><strong>{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</strong> on approved repairs</span>
+                  <div>
+                    <span className="font-bold text-white">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
+                    <div className="text-sm text-slate-400">on all approved repairs</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-slate-700">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-100">
-                    <ClipboardList className="h-4 w-4 text-blue-600" />
+                <div className="flex items-center gap-4 text-slate-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
+                    <ClipboardList className="h-6 w-6 text-white" />
                   </div>
-                  <span>Digital photo report with <strong>detailed vehicle health score</strong></span>
+                  <div>
+                    <span className="font-bold text-white">Digital photo report</span>
+                    <div className="text-sm text-slate-400">with detailed vehicle health score</div>
+                  </div>
                 </div>
-                <div className="flex items-center gap-3 text-sm text-slate-700">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-orange-100">
-                    <Wrench className="h-4 w-4 text-orange-600" />
+                <div className="flex items-center gap-4 text-slate-300">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-600 shadow-lg">
+                    <Wrench className="h-6 w-6 text-white" />
                   </div>
-                  <span>Professional diagnostic available for warning lights ($165)</span>
+                  <div>
+                    <span className="font-bold text-white">Professional diagnostic</span>
+                    <div className="text-sm text-slate-400">available for warning lights ($165)</div>
+                  </div>
                 </div>
               </motion.div>
 
@@ -524,15 +554,27 @@ export default function ByrdsLeadMagnetPage() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="flex flex-wrap items-center gap-4 text-sm text-slate-600"
+                className="rounded-2xl bg-slate-800/50 border border-slate-700/50 p-6 backdrop-blur-sm"
               >
-                <div className="flex items-center gap-2">
-                  <MapPin className="h-4 w-4" /> 
-                  <span className="font-medium">{CONFIG.brand.address}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Clock className="h-4 w-4" /> 
-                  <span className="font-medium">{CONFIG.brand.hours}</span>
+                <div className="grid gap-4 md:grid-cols-2">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/20">
+                      <MapPin className="h-5 w-5 text-orange-400" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-white">Location</div>
+                      <div className="text-sm text-slate-300">{CONFIG.brand.address}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/20">
+                      <Clock className="h-5 w-5 text-orange-400" />
+                    </div>
+                    <div>
+                      <div className="font-bold text-white">Hours</div>
+                      <div className="text-sm text-slate-300">{CONFIG.brand.hours}</div>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
 
@@ -541,79 +583,82 @@ export default function ByrdsLeadMagnetPage() {
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 }}
-                className="flex items-center gap-4"
+                className="flex items-center gap-6"
               >
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                   ))}
-                  <span className="ml-2 text-sm font-semibold text-slate-700">
-                    {CONFIG.trustSignals.googleRating} ({CONFIG.trustSignals.totalReviews} reviews)
+                  <span className="text-lg font-bold text-white">
+                    {CONFIG.trustSignals.googleRating}
                   </span>
+                  <span className="text-slate-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
                 </div>
-                <div className="h-4 w-px bg-slate-300" />
-                <div className="flex items-center gap-1 text-sm text-slate-600">
-                  <Users className="h-4 w-4" />
-                  <span>{CONFIG.trustSignals.customersServed}+ customers served</span>
-              </div>
+                <div className="h-6 w-px bg-slate-600" />
+                <div className="flex items-center gap-2 text-slate-300">
+                  <Users className="h-5 w-5 text-orange-400" />
+                  <span className="font-semibold">{CONFIG.trustSignals.customersServed}+ customers served</span>
+                </div>
               </motion.div>
             </div>
 
             {/* Offer cards */}
-            <div className="grid content-start gap-4">
+            <div className="grid content-start gap-6">
               {OFFERS.map((o) => (
                 <motion.button
                   key={o.code}
                   onClick={() => setSelected(o)}
-                  whileHover={{ scale: 1.02 }}
+                  whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className={cx(
-                    "group relative flex w-full items-start gap-4 rounded-2xl border-2 p-5 text-left transition-all duration-200",
+                    "group relative flex w-full items-start gap-6 rounded-3xl border-2 p-8 text-left transition-all duration-300 backdrop-blur-sm",
                     selected.code === o.code 
-                      ? "border-blue-500 bg-blue-50 shadow-lg" 
-                      : "border-slate-200 bg-white hover:border-blue-300 hover:shadow-md"
+                      ? "border-orange-500 bg-gradient-to-br from-orange-500/20 to-red-500/20 shadow-2xl shadow-orange-500/25" 
+                      : "border-slate-700/50 bg-slate-800/30 hover:border-orange-500/50 hover:bg-slate-800/50 hover:shadow-xl"
                   )}
                 >
                   {o.popular && (
-                    <div className="absolute -top-2 left-4 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-3 py-1 text-xs font-bold text-white">
-                      Most Popular
+                    <div className="absolute -top-3 left-6 rounded-full bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 text-xs font-bold text-white shadow-lg">
+                      ⭐ MOST POPULAR
                     </div>
                   )}
                   
                   <div className={cx(
-                    "flex h-12 w-12 items-center justify-center rounded-xl transition-colors",
+                    "flex h-16 w-16 items-center justify-center rounded-2xl transition-all duration-300 shadow-lg",
                     selected.code === o.code 
-                      ? "bg-blue-600 text-white" 
-                      : "bg-slate-100 text-slate-600 group-hover:bg-blue-100 group-hover:text-blue-600"
+                      ? "bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-orange-500/50" 
+                      : "bg-gradient-to-br from-slate-700 to-slate-800 text-slate-300 group-hover:from-orange-500 group-hover:to-red-500 group-hover:text-white"
                   )}>
-                    <o.icon className="h-6 w-6" />
+                    <o.icon className="h-8 w-8" />
                   </div>
                   
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-start justify-between gap-2">
-                  <div>
-                        <h3 className="font-bold text-slate-900">{o.name}</h3>
-                        <p className="text-sm text-slate-700">{o.short}</p>
+                  <div className="flex-1 space-y-4">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="space-y-2">
+                        <h3 className="text-xl font-bold text-white">{o.name}</h3>
+                        <p className="text-slate-300">{o.short}</p>
                       </div>
                       <div className="text-right">
-                        <div className="text-xs text-slate-500 line-through">{o.value}</div>
-                        <div className="text-lg font-bold text-green-600">FREE</div>
+                        <div className="text-sm text-slate-500 line-through">{o.value}</div>
+                        <div className="text-2xl font-black text-green-400">FREE</div>
                       </div>
                     </div>
                     
-                    <div className="flex items-center gap-2">
-                      <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-mono font-semibold text-slate-700">
-                        Code Hidden
+                    <div className="flex items-center gap-3">
+                      <span className="rounded-full bg-slate-700/50 px-4 py-2 text-sm font-mono font-bold text-slate-300 border border-slate-600">
+                        🔒 Code Hidden
                       </span>
                       {selected.code === o.code && (
-                        <div className="flex items-center gap-1 text-xs font-semibold text-blue-600">
-                          <CheckCircle className="h-3 w-3" />
-                          Selected
+                        <div className="flex items-center gap-2 text-sm font-bold text-orange-400">
+                          <CheckCircle className="h-4 w-4" />
+                          SELECTED
                         </div>
                       )}
                     </div>
                     
-                    <p className="text-xs text-slate-500">{o.finePrint}</p>
+                    <div className="rounded-xl bg-slate-700/30 p-3 border border-slate-600/50">
+                      <p className="text-xs text-slate-400">{o.finePrint}</p>
+                    </div>
                   </div>
                 </motion.button>
               ))}
@@ -622,34 +667,36 @@ export default function ByrdsLeadMagnetPage() {
         </section>
 
         {/* Lead capture */}
-        <section id="lead" className="border-t bg-gradient-to-b from-white to-slate-50">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 px-4 py-16 md:grid-cols-2">
+        <section id="lead" className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23ffffff" fill-opacity="0.02"%3E%3Cpath d="M20 20c0-11.046-8.954-20-20-20v20h20z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+          
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-2">
             <div className="order-2 md:order-1">
-              <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
-                <div className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white">
-                  <Percent className="h-6 w-6" />
+              <div className="rounded-3xl border border-slate-700/50 bg-slate-800/50 p-10 shadow-2xl backdrop-blur-sm">
+                <div className="flex items-start gap-6">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-red-500 text-white shadow-lg">
+                    <Percent className="h-8 w-8" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-slate-900">Claim Your Free Offer</h3>
-                    <p className="mt-2 text-slate-600">
+                    <h3 className="text-3xl font-black text-white">Claim Your Free Offer</h3>
+                    <p className="mt-3 text-lg text-slate-300">
                       Enter your information below to reveal your exclusive coupon code. We'll send it by text/email and take you to booking with the code automatically applied.
                     </p>
                   </div>
                 </div>
 
-                <form ref={formRef} onSubmit={handleSubmit} className="mt-8 grid gap-6">
-                  <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                    <div className="space-y-2">
-                      <label className="text-sm font-semibold text-slate-700">
+                <form ref={formRef} onSubmit={handleSubmit} className="mt-10 grid gap-8">
+                  <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+                    <div className="space-y-3">
+                      <label className="text-sm font-bold text-white uppercase tracking-wide">
                         First name *
                       </label>
                       <input
                         className={cx(
-                          "w-full rounded-xl border px-4 py-3 text-slate-900 placeholder-slate-400 transition-all focus:outline-none focus:ring-2",
+                          "w-full rounded-2xl border px-6 py-4 text-white placeholder-slate-400 transition-all focus:outline-none focus:ring-2 bg-slate-700/50 backdrop-blur-sm",
                           formErrors.firstName 
-                            ? "border-red-300 bg-red-50 focus:ring-red-500" 
-                            : "border-slate-300 focus:ring-blue-500"
+                            ? "border-red-500 bg-red-500/20 focus:ring-red-500" 
+                            : "border-slate-600 focus:ring-orange-500 hover:border-orange-500/50"
                         )}
                         value={form.firstName}
                         onChange={(e) => setForm((s) => ({ ...s, firstName: e.target.value }))}
@@ -658,8 +705,8 @@ export default function ByrdsLeadMagnetPage() {
                         autoComplete="given-name"
                       />
                       {formErrors.firstName && (
-                        <p className="flex items-center gap-1 text-xs text-red-600">
-                          <AlertCircle className="h-3 w-3" />
+                        <p className="flex items-center gap-2 text-sm text-red-400">
+                          <AlertCircle className="h-4 w-4" />
                           {formErrors.firstName}
                         </p>
                       )}
