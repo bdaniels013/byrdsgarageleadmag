@@ -418,55 +418,69 @@ export default function ByrdsLeadMagnetPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
-      {/* Hero Background with Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95"></div>
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%2260%22%20height%3D%2260%22%20viewBox%3D%220%200%2060%2060%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.03%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2230%22%20r%3D%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white overflow-hidden">
+      {/* Premium Background with Advanced Graphics */}
+      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,140,0,0.1),transparent_50%)]"></div>
+      <div className="absolute inset-0 bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(255,140,0,0.05)_60deg,transparent_120deg)]"></div>
       
-      <header className="relative z-40 border-b border-slate-700/50 bg-slate-900/80 backdrop-blur-xl">
-        <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
-          <div className="flex items-center gap-4">
-            <div className="relative">
-              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl">
-                <Wrench className="h-8 w-8" />
+      {/* Animated Grid Pattern */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
+      </div>
+      
+      {/* Floating Elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-bounce"></div>
+      <div className="absolute top-40 right-20 w-24 h-24 bg-red-500/10 rounded-full blur-lg animate-pulse"></div>
+      <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-500/5 rounded-full blur-2xl animate-pulse"></div>
+      
+      <header className="relative z-50 border-b border-orange-500/20 bg-black/90 backdrop-blur-2xl">
+        <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-8">
+          <div className="flex items-center gap-6">
+            <div className="relative group">
+              <div className="grid h-20 w-20 place-items-center rounded-3xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl shadow-orange-500/50 group-hover:shadow-orange-500/75 transition-all duration-300">
+                <Wrench className="h-10 w-10" />
               </div>
-              <div className="absolute -top-1 -right-1 h-6 w-6 rounded-full bg-green-500 flex items-center justify-center">
-                <CheckCircle className="h-3 w-3 text-white" />
+              <div className="absolute -top-2 -right-2 h-8 w-8 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg">
+                <CheckCircle className="h-4 w-4 text-white" />
               </div>
+              <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </div>
             <div>
-              <h1 className="text-2xl font-black text-white tracking-tight">{CONFIG.brand.name}</h1>
-              <div className="flex items-center gap-3 text-sm">
-                <div className="flex items-center gap-1">
+              <h1 className="text-3xl font-black text-white tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                {CONFIG.brand.name}
+              </h1>
+              <div className="flex items-center gap-4 text-sm mt-2">
+                <div className="flex items-center gap-2 bg-yellow-500/20 px-3 py-1 rounded-full">
                   <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
-                  <span className="text-slate-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
+                  <span className="text-gray-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
                 </div>
-                <div className="h-4 w-px bg-slate-600"></div>
-                <span className="text-slate-300">Since {CONFIG.brand.established}</span>
-                <div className="h-4 w-px bg-slate-600"></div>
-                <span className="text-green-400 font-semibold">✓ ASE Certified</span>
+                <div className="h-5 w-px bg-gray-600"></div>
+                <span className="text-gray-300 font-medium">Since {CONFIG.brand.established}</span>
+                <div className="h-5 w-px bg-gray-600"></div>
+                <span className="text-green-400 font-bold bg-green-500/20 px-3 py-1 rounded-full">✓ ASE Certified</span>
               </div>
             </div>
           </div>
           <div className="hidden items-center gap-8 md:flex">
-            <div className="text-right">
-              <div className="flex items-center gap-2 text-slate-300">
-                <Phone className="h-4 w-4" /> 
-                <a href={`tel:${CONFIG.brand.phone}`} className="font-bold text-white hover:text-orange-400 transition-colors">
+            <div className="text-right bg-gray-800/50 px-6 py-3 rounded-2xl backdrop-blur-sm border border-gray-700/50">
+              <div className="flex items-center gap-3 text-gray-200">
+                <Phone className="h-5 w-5 text-orange-400" /> 
+                <a href={`tel:${CONFIG.brand.phone}`} className="font-bold text-white hover:text-orange-400 transition-colors text-lg">
                   {CONFIG.brand.phone}
                 </a>
               </div>
-              <div className="text-xs text-slate-400 mt-1">{CONFIG.brand.hours}</div>
+              <div className="text-sm text-gray-400 mt-1 font-medium">{CONFIG.brand.hours}</div>
             </div>
             <a
               href="#lead"
-              className="group relative inline-flex items-center gap-3 rounded-2xl bg-gradient-to-r from-orange-500 to-red-600 px-8 py-4 text-sm font-bold text-white shadow-2xl hover:from-orange-600 hover:to-red-700 transition-all duration-300 transform hover:scale-105"
+              className="group relative inline-flex items-center gap-4 rounded-2xl bg-gradient-to-r from-orange-500 via-orange-600 to-red-600 px-10 py-5 text-base font-black text-white shadow-2xl shadow-orange-500/50 hover:shadow-orange-500/75 transition-all duration-300 transform hover:scale-105 hover:-translate-y-1"
             >
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
-              <Percent className="h-5 w-5" />
+              <Percent className="h-6 w-6" />
               <span>CLAIM FREE INSPECTION</span>
-              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>
         </div>
@@ -474,105 +488,116 @@ export default function ByrdsLeadMagnetPage() {
 
       <main>
         {/* Hero */}
-        <section className="relative overflow-hidden">
-          {/* Professional Shop Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"></div>
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width%3D%22100%22%20height%3D%22100%22%20viewBox%3D%220%200%20100%20100%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%3Cg%20fill%3D%22%23ffffff%22%20fill-opacity%3D%220.02%22%3E%3Cpath%20d%3D%22M50%200L60%2040L100%2050L60%2060L50%20100L40%2060L0%2050L40%2040z%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+        <section className="relative overflow-hidden min-h-screen flex items-center">
+          {/* Advanced Background Graphics */}
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-900"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,140,0,0.15),transparent_70%)]"></div>
+          <div className="absolute inset-0 bg-[conic-gradient(from_180deg_at_50%_50%,transparent_0deg,rgba(255,140,0,0.08)_60deg,transparent_120deg)]"></div>
           
-          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-16 px-6 py-24 md:grid-cols-2 md:py-32">
-            <div className="space-y-10">
-              <div className="space-y-6">
+          {/* Animated Grid Overlay */}
+          <div className="absolute inset-0 opacity-30">
+            <div className="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.1)_1px,transparent_1px)] bg-[size:60px_60px] animate-pulse"></div>
+          </div>
+          
+          {/* Floating Geometric Shapes */}
+          <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-orange-500/5 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/4 w-48 h-48 bg-red-500/5 rounded-full blur-2xl animate-bounce"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-yellow-500/10 rounded-full blur-xl animate-pulse"></div>
+          
+          <div className="relative mx-auto grid max-w-7xl grid-cols-1 gap-20 px-8 py-32 md:grid-cols-2">
+            <div className="space-y-12">
+              <div className="space-y-8">
                 <motion.div
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="inline-flex items-center gap-3 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/30 px-6 py-3 text-sm font-bold text-orange-300 backdrop-blur-sm"
+                  className="inline-flex items-center gap-4 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 px-8 py-4 text-base font-bold text-orange-300 backdrop-blur-md shadow-lg"
                 >
-                  <Award className="h-5 w-5" />
+                  <Award className="h-6 w-6" />
                   Trusted by {CONFIG.trustSignals.customersServed}+ Elverta Customers
                 </motion.div>
                 
                 <motion.h1
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
-                  className="text-5xl font-black tracking-tight text-white md:text-7xl"
+                  className="text-6xl font-black tracking-tight text-white md:text-8xl leading-tight"
                 >
-                  FREE Digital Vehicle
+                  FREE Digital
                   <span className="block bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                    Inspection
+                    Vehicle Inspection
                   </span>
                 </motion.h1>
                 
                 <motion.p
-                  initial={{ opacity: 0, y: 8 }}
+                  initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-xl text-slate-300 md:text-2xl leading-relaxed"
+                  className="text-2xl text-gray-200 md:text-3xl leading-relaxed font-medium"
                 >
-                  Get a <span className="font-bold text-orange-400">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
+                  Get a <span className="font-bold text-orange-400 bg-orange-500/20 px-2 py-1 rounded">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
                 </motion.p>
               </div>
 
               {/* Trust signals */}
               <motion.div
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="grid gap-4"
+                className="grid gap-6"
               >
-                <div className="flex items-center gap-4 text-slate-300">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 shadow-lg">
-                    <CheckCircle className="h-6 w-6 text-white" />
+                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-green-500 to-green-600 shadow-xl">
+                    <CheckCircle className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <span className="font-bold text-white">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
-                    <div className="text-sm text-slate-400">on all approved repairs</div>
+                    <span className="font-bold text-white text-lg">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
+                    <div className="text-base text-gray-300 mt-1">on all approved repairs</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-slate-300">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
-                    <ClipboardList className="h-6 w-6 text-white" />
+                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl">
+                    <ClipboardList className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <span className="font-bold text-white">Digital photo report</span>
-                    <div className="text-sm text-slate-400">with detailed vehicle health score</div>
+                    <span className="font-bold text-white text-lg">Digital photo report</span>
+                    <div className="text-base text-gray-300 mt-1">with detailed vehicle health score</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4 text-slate-300">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-red-500 to-red-600 shadow-lg">
-                    <Wrench className="h-6 w-6 text-white" />
+                <div className="flex items-center gap-6 text-gray-200 bg-gray-800/50 p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-red-500 to-red-600 shadow-xl">
+                    <Wrench className="h-8 w-8 text-white" />
                   </div>
                   <div>
-                    <span className="font-bold text-white">Professional diagnostic</span>
-                    <div className="text-sm text-slate-400">available for warning lights ($165)</div>
+                    <span className="font-bold text-white text-lg">Professional diagnostic</span>
+                    <div className="text-base text-gray-300 mt-1">available for warning lights ($165)</div>
                   </div>
                 </div>
               </motion.div>
 
               {/* Location & Hours */}
               <motion.div
-                initial={{ opacity: 0, y: 8 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="rounded-2xl bg-slate-800/50 border border-slate-700/50 p-6 backdrop-blur-sm"
+                className="rounded-3xl bg-gray-800/60 border border-gray-700/60 p-8 backdrop-blur-md shadow-xl"
               >
-                <div className="grid gap-4 md:grid-cols-2">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/20">
-                      <MapPin className="h-5 w-5 text-orange-400" />
+                <div className="grid gap-6 md:grid-cols-2">
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
+                      <MapPin className="h-7 w-7 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-white">Location</div>
-                      <div className="text-sm text-slate-300">{CONFIG.brand.address}</div>
+                      <div className="font-bold text-white text-lg">Location</div>
+                      <div className="text-base text-gray-300 mt-1">{CONFIG.brand.address}</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-500/20">
-                      <Clock className="h-5 w-5 text-orange-400" />
+                  <div className="flex items-center gap-4">
+                    <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
+                      <Clock className="h-7 w-7 text-white" />
                     </div>
                     <div>
-                      <div className="font-bold text-white">Hours</div>
-                      <div className="text-sm text-slate-300">{CONFIG.brand.hours}</div>
+                      <div className="font-bold text-white text-lg">Hours</div>
+                      <div className="text-base text-gray-300 mt-1">{CONFIG.brand.hours}</div>
                     </div>
                   </div>
                 </div>
