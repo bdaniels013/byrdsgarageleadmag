@@ -284,7 +284,6 @@ export default function ByrdsLeadMagnetPage() {
     };
 
     try {
-      // Simulate successful form submission for now
       console.log("Form submitted successfully:", payload);
       
       // Track the submission
@@ -297,18 +296,38 @@ export default function ByrdsLeadMagnetPage() {
         }
       });
 
+      // Send real email using your SMTP credentials
+      if (form.email) {
+        try {
+          const emailResponse = await fetch('/api/send-email', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              to: form.email,
+              name: `${form.firstName} ${form.lastName}`.trim(),
+              couponCode: selected.code,
+              offerName: selected.name,
+              bookingUrl: `${CONFIG.TEKMETRIC_BOOK_URL}${selected.code}`,
+            }),
+          });
+
+          if (emailResponse.ok) {
+            console.log(`📧 Email sent successfully to ${form.email}`);
+          } else {
+            console.error('Email sending failed:', await emailResponse.text());
+          }
+        } catch (emailError) {
+          console.error("Email sending failed:", emailError);
+          // Don't fail the entire form if email fails
+        }
+      }
+
       // Show success modal
       setShowSuccess(true);
       
-      // Simulate sending coupon via email/SMS
-      console.log(`Sending coupon ${selected.code} to ${form.email} and ${form.phone}`);
-      
-      // Simulate email sending (in production, this would be a real API call)
-      if (form.email) {
-        console.log(`📧 Email sent to ${form.email} with coupon code: ${selected.code}`);
-      }
+      // Log phone number for manual SMS (since SMS service isn't set up yet)
       if (form.phone) {
-        console.log(`📱 SMS sent to ${form.phone} with coupon code: ${selected.code}`);
+        console.log(`📱 Manual SMS needed to ${form.phone} with coupon code: ${selected.code}`);
       }
       
       // Redirect to booking after showing success
