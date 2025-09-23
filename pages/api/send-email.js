@@ -12,6 +12,14 @@ export default async function handler(req, res) {
   }
 
   try {
+    // Debug environment variables
+    console.log('SMTP Config:', {
+      host: process.env.SMTP_HOST || 'smtp.gmail.com',
+      port: process.env.SMTP_PORT || 587,
+      user: process.env.SMTP_USER ? 'SET' : 'NOT SET',
+      pass: process.env.SMTP_PASS ? 'SET' : 'NOT SET'
+    });
+
     // Create transporter using your SMTP credentials
     const transporter = nodemailer.createTransporter({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
@@ -22,6 +30,10 @@ export default async function handler(req, res) {
         pass: process.env.SMTP_PASS,
       },
     });
+
+    // Verify connection
+    await transporter.verify();
+    console.log('SMTP connection verified successfully');
 
     // Email template
     const htmlContent = `
