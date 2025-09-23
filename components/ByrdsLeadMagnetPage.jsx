@@ -603,7 +603,7 @@ export default function ByrdsLeadMagnetPage() {
                     
                     <div className="flex items-center gap-2">
                       <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-mono font-semibold text-slate-700">
-                        {o.code}
+                        Code Hidden
                       </span>
                       {selected.code === o.code && (
                         <div className="flex items-center gap-1 text-xs font-semibold text-blue-600">
@@ -633,7 +633,7 @@ export default function ByrdsLeadMagnetPage() {
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900">Claim Your Free Offer</h3>
                     <p className="mt-2 text-slate-600">
-                      We'll send your coupon code by text/email, then take you to booking with the code automatically applied.
+                      Enter your information below to reveal your exclusive coupon code. We'll send it by text/email and take you to booking with the code automatically applied.
                     </p>
                   </div>
                 </div>
@@ -887,7 +887,7 @@ export default function ByrdsLeadMagnetPage() {
                       Limited Time Offer
                     </div>
                     <p className="mt-1 text-xs opacity-90">
-                      This free inspection is only available for a limited time. Book now to secure your spot!
+                      Enter your information above to reveal your exclusive coupon code and book your free inspection!
                     </p>
                   </div>
                 </div>
@@ -1079,10 +1079,10 @@ export default function ByrdsLeadMagnetPage() {
               </p>
               <div className="mt-6 rounded-xl bg-blue-50 p-4">
                 <p className="text-sm font-semibold text-blue-800">
-                  Coupon Code: {selected.code}
+                  🎉 Your Exclusive Coupon Code: {selected.code}
                 </p>
                 <p className="text-xs text-blue-600 mt-1">
-                  This code will be automatically applied when you book
+                  This code will be automatically applied when you book your appointment
                 </p>
               </div>
             </motion.div>
