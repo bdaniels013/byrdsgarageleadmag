@@ -299,6 +299,15 @@ export default function ByrdsLeadMagnetPage() {
       // Send real email using your SMTP credentials
       if (form.email) {
         try {
+          console.log('Attempting to send email to:', form.email);
+          console.log('Email data:', {
+            to: form.email,
+            name: `${form.firstName} ${form.lastName}`.trim(),
+            couponCode: selected.code,
+            offerName: selected.name,
+            bookingUrl: `${CONFIG.TEKMETRIC_BOOK_URL}${selected.code}`,
+          });
+
           const emailResponse = await fetch('/api/send-email', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -311,10 +320,15 @@ export default function ByrdsLeadMagnetPage() {
             }),
           });
 
+          console.log('Email response status:', emailResponse.status);
+          console.log('Email response ok:', emailResponse.ok);
+
           if (emailResponse.ok) {
-            console.log(`📧 Email sent successfully to ${form.email}`);
+            const result = await emailResponse.json();
+            console.log(`📧 Email sent successfully to ${form.email}:`, result);
           } else {
-            console.error('Email sending failed:', await emailResponse.text());
+            const errorText = await emailResponse.text();
+            console.error('Email sending failed:', errorText);
           }
         } catch (emailError) {
           console.error("Email sending failed:", emailError);
