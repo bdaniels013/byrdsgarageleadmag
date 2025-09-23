@@ -6,7 +6,7 @@ import {
   Mail,
   Phone,
   Car,
-  TicketPercent,
+  Percent,
   Wrench,
   Battery,
   GaugeCircle,
@@ -196,25 +196,35 @@ const UPSELL = {
 function useUTM() {
   return useMemo(() => {
     if (typeof window === "undefined") return {};
-    const url = new URL(window.location.href);
-    const utms = {};
-    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => {
-      const val = url.searchParams.get(k);
-      if (val) utms[k] = val;
-    });
-    return utms;
+    try {
+      const url = new URL(window.location.href);
+      const utms = {};
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => {
+        const val = url.searchParams.get(k);
+        if (val) utms[k] = val;
+      });
+      return utms;
+    } catch (error) {
+      console.warn('Error parsing UTM parameters:', error);
+      return {};
+    }
   }, []);
 }
 
 // ==== PAGE ====================================================================
 export default function ByrdsLeadMagnetPage() {
   const utm = useUTM();
-  const [selected, setSelected] = useState(OFFERS[0]);
+  const [selected, setSelected] = useState(OFFERS?.[0] || null);
   const [submitting, setSubmitting] = useState(false);
   const [showUpsell, setShowUpsell] = useState(false);
   const [formErrors, setFormErrors] = useState({});
   const [showSuccess, setShowSuccess] = useState(false);
   const formRef = useRef(null);
+
+  // Safety check
+  if (!selected) {
+    return <div>Loading...</div>;
+  }
 
   // Lead form state
   const [form, setForm] = useState({
@@ -440,7 +450,7 @@ export default function ByrdsLeadMagnetPage() {
               href="#lead"
               className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-2.5 text-sm font-semibold text-white shadow-lg hover:from-blue-700 hover:to-blue-800 transition-all duration-200"
             >
-              <TicketPercent className="h-4 w-4" />
+              <Percent className="h-4 w-4" />
               Claim Free Offer
             </a>
           </div>
@@ -618,7 +628,7 @@ export default function ByrdsLeadMagnetPage() {
               <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
                 <div className="flex items-start gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-green-500 to-green-600 text-white">
-                  <TicketPercent className="h-6 w-6" />
+                  <Percent className="h-6 w-6" />
                   </div>
                   <div>
                     <h3 className="text-2xl font-bold text-slate-900">Claim Your Free Offer</h3>
@@ -792,7 +802,7 @@ export default function ByrdsLeadMagnetPage() {
                       </>
                     ) : (
                       <>
-                        <TicketPercent className="h-5 w-5" />
+                        <Percent className="h-5 w-5" />
                         Send My Free Coupon & Continue
                         <ArrowRight className="h-4 w-4" />
                       </>
@@ -811,7 +821,7 @@ export default function ByrdsLeadMagnetPage() {
             <div className="order-1 md:order-2">
               <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
                 <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-blue-100 to-blue-200 px-4 py-2 text-sm font-semibold text-blue-800">
-                  <TicketPercent className="h-4 w-4" /> 
+                  <Percent className="h-4 w-4" /> 
                   Your Selected Offer
                 </div>
                 
