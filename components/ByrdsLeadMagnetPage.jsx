@@ -93,7 +93,7 @@ const CONFIG = {
     description: "Professional automotive repair and maintenance services in Elverta, CA",
   },
   // Tekmetric booking URL. You can also inject it at runtime via `window.__ENV__`.
-  TEKMETRIC_BOOK_URL: getEnv("NEXT_PUBLIC_TEKMETRIC_BOOK_URL", "https://example-tekmetric-booking.com/?promo="),
+  TEKMETRIC_BOOK_URL: getEnv("NEXT_PUBLIC_TEKMETRIC_BOOK_URL", "https://booking.shopgenie.io/?shop=byrds-garage-3978714221&preselect_account=byrds-garage-3978713555&promo="),
   // Stripe Checkout URLs (create Products/Prices in Stripe and paste checkout links)
   STRIPE: {
     OIL_CHANGE_COUPON_CHECKOUT_URL: getEnv("NEXT_PUBLIC_STRIPE_OIL_COUPON_URL", "https://buy.stripe.com/test_12345"),
