@@ -1,9 +1,10 @@
-Trigger deployment - Fix MongoDB SSL connection issues
+Trigger deployment - Add database testing endpoints
 Timestamp: 2024-01-15
 - Fixed SSL/TLS connection issues with MongoDB Atlas on Vercel
-- Added proper TLS configuration and timeout settings
-- Created alternative simple connection endpoints for testing
-- Test endpoints: /api/test-mongodb and /api/test-mongodb-simple
+- Added database testing endpoints to verify lead capture
+- Test endpoints: /api/test-mongodb, /api/test-mongodb-simple
+- Database check: /api/check-database
+- Test lead capture: /api/test-lead-capture
 - Alternative lead capture: /api/leads/create-simple
 - Database: byrds-garage-leads, Collection: leads
 - Admin dashboard available at /admin/dashboard
