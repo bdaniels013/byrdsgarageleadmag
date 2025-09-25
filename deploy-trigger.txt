@@ -1,8 +1,10 @@
-ADD CONCERNS COLUMN TO ADMIN DASHBOARD
-Timestamp: 2024-01-15 14:05
+FIX CONCERNS FIELD CAPTURE
+Timestamp: 2024-01-15 14:10
+- Fixed test endpoint to capture concern field from forms
+- Updated forms to send concern data to API
+- Concerns will now be properly stored and displayed
 - Added "Concerns" column to admin dashboard table
 - Updated CSV export to include concern field
-- Admin dashboard now displays all form data including concerns
 - Lead capture system fully functional
 - Database: byrds-garage-leads, Collection: leads
 - Admin dashboard: /admin/dashboard

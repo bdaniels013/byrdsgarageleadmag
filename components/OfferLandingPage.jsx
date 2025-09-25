@@ -232,6 +232,7 @@ const OfferLandingPage = ({ offerSlug }) => {
             phone: form.phone,
             email: form.email,
             vehicle: form.vehicle,
+            concern: form.concern,
             offerCode: selected.code
           }),
         });

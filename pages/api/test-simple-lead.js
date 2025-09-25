@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     console.log('=== TESTING SIMPLE LEAD CAPTURE ===');
     console.log('Request body:', req.body);
     
-    const { firstName, lastName, phone, email, vehicle, offerCode } = req.body;
+    const { firstName, lastName, phone, email, vehicle, concern, offerCode } = req.body;
 
     // Basic validation
     if (!firstName || !phone) {
@@ -41,6 +41,7 @@ export default async function handler(req, res) {
       phone: phone.trim(),
       email: email?.trim() || '',
       vehicle: vehicle?.trim() || '',
+      concern: concern?.trim() || '',
       offerCode: offerCode || 'TEST',
       createdAt: new Date(),
       status: 'pending',
