@@ -1,11 +1,9 @@
-FORCE DEPLOYMENT - API endpoints not accessible
-Timestamp: 2024-01-15 13:45
-- All API files exist in project but returning 404 errors
-- Force new deployment to include all API endpoints
-- Test endpoints: /api/test-mongodb, /api/test-mongodb-simple
-- Database check: /api/check-database
-- Test lead capture: /api/test-lead-capture
-- Alternative lead capture: /api/leads/create-simple
+FIX LEAD CAPTURE - Forms not calling MongoDB API
+Timestamp: 2024-01-15 13:50
+- Updated forms to use /api/leads/create-simple (no SSL issues)
+- Simplified MongoDB connection for admin dashboard
+- Forms now properly call lead capture API
+- Test endpoints: /api/test-mongodb-simple, /api/check-database
 - Database: byrds-garage-leads, Collection: leads
-- Admin dashboard available at /admin/dashboard
-- MongoDB connection working, need to verify lead capture
+- Admin dashboard: /admin/dashboard
+- MongoDB connection working, forms now connected

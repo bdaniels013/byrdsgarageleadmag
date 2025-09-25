@@ -213,7 +213,7 @@ const OfferLandingPage = ({ offerSlug }) => {
       
       // First, capture the lead in the database
       try {
-        const leadResponse = await fetch('/api/leads/create', {
+        const leadResponse = await fetch('/api/leads/create-simple', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
