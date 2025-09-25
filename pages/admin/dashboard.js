@@ -125,18 +125,20 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8 flex justify-between items-start">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Byrd's Garage - Lead Dashboard</h1>
-            <p className="text-gray-600">Monitor and manage your lead magnet campaigns</p>
+        <div className="mb-8">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+            <div>
+              <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Byrd's Garage - Lead Dashboard</h1>
+              <p className="text-gray-600 text-sm sm:text-base">Monitor and manage your lead magnet campaigns</p>
+            </div>
+            <button
+              onClick={handleLogout}
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors w-full sm:w-auto"
+            >
+              <LogOut className="h-4 w-4" />
+              Logout
+            </button>
           </div>
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-          >
-            <LogOut className="h-4 w-4" />
-            Logout
-          </button>
         </div>
 
         {/* Stats Cards */}
@@ -193,28 +195,30 @@ export default function AdminDashboard() {
         </div>
 
         {/* Actions */}
-        <div className="mb-6 flex justify-between items-center">
-          <h2 className="text-xl font-semibold text-gray-900">Recent Leads</h2>
-          <div className="flex space-x-3">
-            <button
-              onClick={fetchLeads}
-              className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50"
-            >
-              <RefreshCw className="h-4 w-4 mr-2" />
-              Refresh
-            </button>
-            <button
-              onClick={exportLeads}
-              className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
-            >
-              <Download className="h-4 w-4 mr-2" />
-              Export CSV
-            </button>
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900">Recent Leads</h2>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <button
+                onClick={fetchLeads}
+                className="inline-flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 w-full sm:w-auto"
+              >
+                <RefreshCw className="h-4 w-4 mr-2" />
+                Refresh
+              </button>
+              <button
+                onClick={exportLeads}
+                className="inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 w-full sm:w-auto"
+              >
+                <Download className="h-4 w-4 mr-2" />
+                Export CSV
+              </button>
+            </div>
           </div>
         </div>
 
-        {/* Leads Table */}
-        <div className="bg-white shadow overflow-hidden sm:rounded-md">
+        {/* Desktop Table View */}
+        <div className="hidden md:block bg-white shadow overflow-hidden sm:rounded-md">
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
               <thead className="bg-gray-50">
@@ -299,6 +303,79 @@ export default function AdminDashboard() {
               </tbody>
             </table>
           </div>
+        </div>
+
+        {/* Mobile Card View */}
+        <div className="md:hidden space-y-4">
+          {leads.map((lead) => (
+            <div key={lead._id} className="bg-white rounded-lg shadow-md border border-gray-200 p-4">
+              {/* Header with Name and Status */}
+              <div className="flex items-start justify-between mb-3">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-900">
+                    {lead.firstName} {lead.lastName}
+                  </h3>
+                  <div className="flex items-center mt-1">
+                    {lead.couponSent ? (
+                      <CheckCircle className="h-4 w-4 text-green-500 mr-1" />
+                    ) : (
+                      <Clock className="h-4 w-4 text-yellow-500 mr-1" />
+                    )}
+                    <span className={`text-sm ${
+                      lead.couponSent ? 'text-green-600' : 'text-yellow-600'
+                    }`}>
+                      {lead.couponSent ? 'Coupon Sent' : 'Pending'}
+                    </span>
+                  </div>
+                </div>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                  {lead.offerCode}
+                </span>
+              </div>
+
+              {/* Contact Information */}
+              <div className="space-y-2 mb-3">
+                <div className="flex items-center text-sm text-gray-700">
+                  <Phone className="h-4 w-4 mr-2 text-gray-500" />
+                  <a href={`tel:${lead.phone}`} className="text-blue-600 hover:text-blue-800">
+                    {lead.phone}
+                  </a>
+                </div>
+                {lead.email && (
+                  <div className="flex items-center text-sm text-gray-700">
+                    <Mail className="h-4 w-4 mr-2 text-gray-500" />
+                    <a href={`mailto:${lead.email}`} className="text-blue-600 hover:text-blue-800">
+                      {lead.email}
+                    </a>
+                  </div>
+                )}
+              </div>
+
+              {/* Vehicle Information */}
+              {lead.vehicle && (
+                <div className="mb-3">
+                  <div className="text-sm font-medium text-gray-500 mb-1">Vehicle:</div>
+                  <div className="text-sm text-gray-900">{lead.vehicle}</div>
+                </div>
+              )}
+
+              {/* Concerns */}
+              {lead.concern && (
+                <div className="mb-3">
+                  <div className="text-sm font-medium text-gray-500 mb-1">Concerns:</div>
+                  <div className="text-sm text-gray-900 bg-gray-50 p-2 rounded border">
+                    {lead.concern}
+                  </div>
+                </div>
+              )}
+
+              {/* Date */}
+              <div className="flex items-center text-xs text-gray-500">
+                <Calendar className="h-3 w-3 mr-1" />
+                {new Date(lead.createdAt).toLocaleDateString()} at {new Date(lead.createdAt).toLocaleTimeString()}
+              </div>
+            </div>
+          ))}
         </div>
 
         {leads.length === 0 && (
