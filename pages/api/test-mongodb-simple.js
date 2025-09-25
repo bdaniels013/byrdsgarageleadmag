@@ -1,4 +1,4 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
+import { MongoClient } from 'mongodb';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -6,39 +6,32 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Connect to MongoDB with Stable API and SSL configuration
+    console.log('Testing MongoDB connection...');
+    console.log('MONGODB_URI exists:', !!process.env.MONGODB_URI);
+    
+    // Simple connection without Stable API for testing
     const client = new MongoClient(process.env.MONGODB_URI, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-      tls: true,
-      tlsAllowInvalidCertificates: false,
-      tlsAllowInvalidHostnames: false,
       connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 10000,
       socketTimeoutMS: 10000,
     });
 
     await client.connect();
+    console.log('Connected to MongoDB successfully');
     
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-
     // Test database access
     const db = client.db('byrds-garage-leads');
     const leadsCollection = db.collection('leads');
     
     // Count existing leads
     const leadCount = await leadsCollection.countDocuments();
+    console.log('Lead count:', leadCount);
     
     await client.close();
 
     return res.status(200).json({
       success: true,
-      message: 'Successfully connected to MongoDB!',
+      message: 'Successfully connected to MongoDB with simple configuration!',
       database: 'byrds-garage-leads',
       collection: 'leads',
       existingLeads: leadCount,
@@ -49,7 +42,9 @@ export default async function handler(req, res) {
     console.error('MongoDB connection error:', error);
     return res.status(500).json({ 
       error: 'Failed to connect to MongoDB',
-      details: error.message
+      details: error.message,
+      code: error.code,
+      name: error.name
     });
   }
 }

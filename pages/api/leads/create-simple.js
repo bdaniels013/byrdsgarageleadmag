@@ -1,15 +1,6 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
-import rateLimit from 'express-rate-limit';
-
-// Rate limiting configuration
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.',
-});
+import { MongoClient } from 'mongodb';
 
 export default async function handler(req, res) {
-  // Apply rate limiting
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -36,20 +27,13 @@ export default async function handler(req, res) {
       });
     }
 
-    // Connect to MongoDB with Stable API and SSL configuration
+    // Connect to MongoDB with simple configuration
     const client = new MongoClient(process.env.MONGODB_URI, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      },
-      tls: true,
-      tlsAllowInvalidCertificates: false,
-      tlsAllowInvalidHostnames: false,
       connectTimeoutMS: 10000,
       serverSelectionTimeoutMS: 10000,
       socketTimeoutMS: 10000,
     });
+    
     await client.connect();
     const db = client.db('byrds-garage-leads');
     const leadsCollection = db.collection('leads');
@@ -108,16 +92,8 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Error creating lead:', error);
     return res.status(500).json({ 
-      error: 'Internal server error. Please try again later.' 
+      error: 'Internal server error. Please try again later.',
+      details: error.message
     });
   }
-}
-
-// Apply rate limiting middleware
-export const config = {
-  api: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
 }

@@ -11,7 +11,13 @@ export default async function handler(req, res) {
         version: ServerApiVersion.v1,
         strict: true,
         deprecationErrors: true,
-      }
+      },
+      tls: true,
+      tlsAllowInvalidCertificates: false,
+      tlsAllowInvalidHostnames: false,
+      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 10000,
     });
     await client.connect();
     const db = client.db('byrds-garage-leads');

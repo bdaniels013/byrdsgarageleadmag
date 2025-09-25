@@ -1,8 +1,9 @@
-Trigger deployment - MongoDB Stable API configuration
+Trigger deployment - Fix MongoDB SSL connection issues
 Timestamp: 2024-01-15
-- Connected form submissions to lead capture API
-- Updated to MongoDB Stable API v1 for better compatibility
+- Fixed SSL/TLS connection issues with MongoDB Atlas on Vercel
+- Added proper TLS configuration and timeout settings
+- Created alternative simple connection endpoints for testing
+- Test endpoints: /api/test-mongodb and /api/test-mongodb-simple
+- Alternative lead capture: /api/leads/create-simple
 - Database: byrds-garage-leads, Collection: leads
-- Added MongoDB connection test endpoint: /api/test-mongodb
 - Admin dashboard available at /admin/dashboard
-- MongoDB URI: mongodb+srv://1coastmedia:byrdsgarage1$@byrds-garage-leads.lh3wcgx.mongodb.net/
