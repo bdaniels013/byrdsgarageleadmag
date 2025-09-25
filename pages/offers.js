@@ -41,7 +41,7 @@ const OFFERS = [
     name: "FREE 90‑Point Digital Vehicle Inspection",
     icon: ClipboardList,
     short: "Comprehensive inspection with photos & vehicle health score",
-    long: "Get a FREE 90‑point digital inspection with detailed vehicle report and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, No pressure, just real data and practical solutions.",
+    long: "Get a FREE 90‑point digital inspection with detailed vehicle report and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—No pressure, just real data and practical solutions.",
     value: "$89",
     popular: true,
     slug: "free-90-point-inspection",
@@ -153,6 +153,7 @@ export default function OffersPage() {
               </div>
             </div>
 
+            {/* Desktop Header Elements */}
             <div className="hidden md:flex items-center space-x-4">
               <a
                 href="/admin/login"
@@ -172,6 +173,25 @@ export default function OffersPage() {
               <div className="flex items-center space-x-2 bg-green-500/20 px-3 py-2 rounded-full">
                 <Award className="h-4 w-4 text-green-400" />
                 <span className="text-sm font-semibold text-green-200">ASE Certified</span>
+              </div>
+            </div>
+
+            {/* Mobile Header Elements */}
+            <div className="md:hidden flex items-center space-x-2">
+              <a
+                href="/admin/login"
+                className="flex items-center gap-1 rounded-full bg-gray-700/50 px-2 py-1.5 text-xs font-medium text-gray-300 hover:bg-gray-600/50 transition-all duration-300 border border-gray-600/50"
+              >
+                <svg className="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Admin
+              </a>
+              <div className="flex items-center space-x-1 bg-yellow-500/20 px-2 py-1.5 rounded-full">
+                <Star className="h-3 w-3 text-yellow-400 fill-current" />
+                <span className="text-xs font-semibold text-yellow-200">
+                  {CONFIG.trustSignals.googleRating}
+                </span>
               </div>
             </div>
           </div>
@@ -194,7 +214,7 @@ export default function OffersPage() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Professional auto care services, completely free. No strings attached, no pressure, No pressure, just real data and practical solutions.
+              Professional auto care services, completely free. No strings attached, No pressure, just real data and practical solutions.
             </p>
 
             {/* Trust Signals */}

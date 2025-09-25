@@ -1,5 +1,8 @@
-ADMIN AUTHENTICATION & ADDRESS UPDATE
-Timestamp: 2024-01-15 14:25
+REMOVE PERCENTAGE SIGNS & COMPLETE UPDATES
+Timestamp: 2024-01-15 14:40
+- Removed percentage signs from all offer pages (replaced Percent icon with DollarSign icon)
+- Added mobile-optimized admin button to all pages (main landing, offers, individual offer pages)
+- Fixed duplicate "No pressure" text across all pages
 - Added password protection to admin dashboard with JWT authentication
 - Created admin login page at /admin/login
 - Added admin dashboard button to main offers page
@@ -10,3 +13,4 @@ Timestamp: 2024-01-15 14:25
 - All previous updates included: text changes, enhanced reviews, mobile optimization
 - Database: byrds-garage-leads, Collection: leads
 - Admin dashboard: /admin/dashboard (now password protected)
+- Mobile admin button: Touch-friendly, smaller size, accessible on all devices
