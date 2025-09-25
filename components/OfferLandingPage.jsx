@@ -211,6 +211,39 @@ const OfferLandingPage = ({ offerSlug }) => {
     try {
       console.log("Form submitted successfully:", { ...form, offer: selected.code });
       
+      // First, capture the lead in the database
+      try {
+        const leadResponse = await fetch('/api/leads/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            phone: form.phone,
+            email: form.email,
+            vehicle: form.vehicle,
+            concern: form.concern,
+            offerCode: selected.code,
+            marketingOptIn: true, // Assuming they want marketing since they're filling out the form
+            utm: {}, // Could add UTM tracking here
+            page: router.asPath,
+            timestamp: new Date().toISOString()
+          }),
+        });
+
+        if (leadResponse.ok) {
+          const leadResult = await leadResponse.json();
+          console.log('✅ Lead captured successfully:', leadResult);
+        } else {
+          const errorText = await leadResponse.text();
+          console.error('❌ Lead capture failed:', errorText);
+          // Don't fail the entire form if lead capture fails
+        }
+      } catch (leadError) {
+        console.error("Lead capture error:", leadError);
+        // Don't fail the entire form if lead capture fails
+      }
+      
       // Send real email using your SMTP credentials
       if (form.email) {
         try {

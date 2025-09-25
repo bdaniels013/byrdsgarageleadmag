@@ -286,6 +286,39 @@ export default function ByrdsLeadMagnetPage() {
     try {
       console.log("Form submitted successfully:", payload);
       
+      // First, capture the lead in the database
+      try {
+        const leadResponse = await fetch('/api/leads/create', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName: form.firstName,
+            lastName: form.lastName,
+            phone: form.phone,
+            email: form.email,
+            vehicle: form.vehicle,
+            concern: form.concern,
+            offerCode: selected.code,
+            marketingOptIn: form.marketingOptIn,
+            utm: utm,
+            page: payload.page,
+            timestamp: payload.timestamp
+          }),
+        });
+
+        if (leadResponse.ok) {
+          const leadResult = await leadResponse.json();
+          console.log('✅ Lead captured successfully:', leadResult);
+        } else {
+          const errorText = await leadResponse.text();
+          console.error('❌ Lead capture failed:', errorText);
+          // Don't fail the entire form if lead capture fails
+        }
+      } catch (leadError) {
+        console.error("Lead capture error:", leadError);
+        // Don't fail the entire form if lead capture fails
+      }
+      
       // Track the submission
       track("lead_submit", { 
         offer_code: selected.code,

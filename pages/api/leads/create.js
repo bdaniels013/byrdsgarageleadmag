@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 import rateLimit from 'express-rate-limit';
 
 // Rate limiting configuration
@@ -36,10 +36,16 @@ export default async function handler(req, res) {
       });
     }
 
-    // Connect to MongoDB
-    const client = new MongoClient(process.env.MONGODB_URI);
+    // Connect to MongoDB with Stable API
+    const client = new MongoClient(process.env.MONGODB_URI, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      }
+    });
     await client.connect();
-    const db = client.db('byrds-garage');
+    const db = client.db('byrds-garage-leads');
     const leadsCollection = db.collection('leads');
 
     // Check for duplicate leads (same phone number and offer code)

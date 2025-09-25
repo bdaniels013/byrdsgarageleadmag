@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
@@ -6,9 +6,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const client = new MongoClient(process.env.MONGODB_URI);
+    const client = new MongoClient(process.env.MONGODB_URI, {
+      serverApi: {
+        version: ServerApiVersion.v1,
+        strict: true,
+        deprecationErrors: true,
+      }
+    });
     await client.connect();
-    const db = client.db('byrds-garage');
+    const db = client.db('byrds-garage-leads');
     const leadsCollection = db.collection('leads');
 
     // Get all leads sorted by creation date (newest first)
