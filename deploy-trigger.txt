@@ -1,9 +1,9 @@
-FIX LEAD CAPTURE - Forms not calling MongoDB API
-Timestamp: 2024-01-15 13:50
-- Updated forms to use /api/leads/create-simple (no SSL issues)
-- Simplified MongoDB connection for admin dashboard
-- Forms now properly call lead capture API
-- Test endpoints: /api/test-mongodb-simple, /api/check-database
+DEBUG LEAD CAPTURE - Add detailed logging and test endpoint
+Timestamp: 2024-01-15 13:55
+- Created /api/test-simple-lead with detailed error logging
+- Added comprehensive console logging to form submission
+- Forms now call test endpoint to debug MongoDB connection
+- Test endpoints: /api/test-simple-lead, /api/check-database
 - Database: byrds-garage-leads, Collection: leads
 - Admin dashboard: /admin/dashboard
-- MongoDB connection working, forms now connected
+- Debugging why leads aren't being stored in MongoDB
