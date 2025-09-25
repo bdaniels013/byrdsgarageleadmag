@@ -42,12 +42,13 @@ export default function AdminDashboard() {
 
   const exportLeads = () => {
     const csvContent = [
-      ['Name', 'Phone', 'Email', 'Vehicle', 'Offer Code', 'Status', 'Created At'],
+      ['Name', 'Phone', 'Email', 'Vehicle', 'Concerns', 'Offer Code', 'Status', 'Created At'],
       ...leads.map(lead => [
         `${lead.firstName} ${lead.lastName}`,
         lead.phone,
         lead.email,
         lead.vehicle,
+        lead.concern || 'No concerns specified',
         lead.offerCode,
         lead.status,
         new Date(lead.createdAt).toLocaleString()
@@ -172,6 +173,9 @@ export default function AdminDashboard() {
                     Vehicle
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                    Concerns
+                  </th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                     Offer
                   </th>
                   <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -206,6 +210,11 @@ export default function AdminDashboard() {
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                       {lead.vehicle || 'Not specified'}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-900 max-w-xs">
+                      <div className="truncate" title={lead.concern || 'No concerns specified'}>
+                        {lead.concern || 'No concerns specified'}
+                      </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">

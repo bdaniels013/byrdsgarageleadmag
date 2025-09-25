@@ -1,9 +1,8 @@
-DEBUG LEAD CAPTURE - Add detailed logging and test endpoint
-Timestamp: 2024-01-15 13:55
-- Created /api/test-simple-lead with detailed error logging
-- Added comprehensive console logging to form submission
-- Forms now call test endpoint to debug MongoDB connection
-- Test endpoints: /api/test-simple-lead, /api/check-database
+ADD CONCERNS COLUMN TO ADMIN DASHBOARD
+Timestamp: 2024-01-15 14:05
+- Added "Concerns" column to admin dashboard table
+- Updated CSV export to include concern field
+- Admin dashboard now displays all form data including concerns
+- Lead capture system fully functional
 - Database: byrds-garage-leads, Collection: leads
 - Admin dashboard: /admin/dashboard
-- Debugging why leads aren't being stored in MongoDB
