@@ -1,10 +1,12 @@
-FIX CONCERNS FIELD CAPTURE
-Timestamp: 2024-01-15 14:10
-- Fixed test endpoint to capture concern field from forms
-- Updated forms to send concern data to API
-- Concerns will now be properly stored and displayed
-- Added "Concerns" column to admin dashboard table
-- Updated CSV export to include concern field
-- Lead capture system fully functional
+ADMIN AUTHENTICATION & ADDRESS UPDATE
+Timestamp: 2024-01-15 14:25
+- Added password protection to admin dashboard with JWT authentication
+- Created admin login page at /admin/login
+- Added admin dashboard button to main offers page
+- Updated address to "220 Elverta Rd., Elverta, CA 95626" across all pages
+- Added jsonwebtoken dependency for secure authentication
+- Admin credentials: Set ADMIN_USERNAME and ADMIN_PASSWORD in environment variables
+- JWT secret: Set JWT_SECRET in environment variables
+- All previous updates included: text changes, enhanced reviews, mobile optimization
 - Database: byrds-garage-leads, Collection: leads
-- Admin dashboard: /admin/dashboard
+- Admin dashboard: /admin/dashboard (now password protected)

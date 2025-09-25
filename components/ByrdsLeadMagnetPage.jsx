@@ -123,7 +123,7 @@ const OFFERS = [
     icon: ClipboardList,
     short: "Comprehensive inspection with photos & vehicle health score",
     long:
-      "Get a FREE 90‑point digital inspection with detailed photos and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, just honest advice.",
+      "Get a FREE 90‑point digital inspection with detailed photos and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, No pressure, just real data and practical solutions.",
     finePrint:
       "Visual/triage checks are not a full diagnostic. Warning‑light/drivability issues may require a $165 diagnostic.",
     cta: "Book My Free Inspection",
@@ -197,13 +197,13 @@ function useUTM() {
   return useMemo(() => {
     if (typeof window === "undefined") return {};
     try {
-      const url = new URL(window.location.href);
-      const utms = {};
-      ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => {
-        const val = url.searchParams.get(k);
-        if (val) utms[k] = val;
-      });
-      return utms;
+    const url = new URL(window.location.href);
+    const utms = {};
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach((k) => {
+      const val = url.searchParams.get(k);
+      if (val) utms[k] = val;
+    });
+    return utms;
     } catch (error) {
       console.warn('Error parsing UTM parameters:', error);
       return {};
@@ -291,20 +291,20 @@ export default function ByrdsLeadMagnetPage() {
         const leadResponse = await fetch('/api/test-simple-lead', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
+        body: JSON.stringify({
             firstName: form.firstName,
             lastName: form.lastName,
             phone: form.phone,
             email: form.email,
             vehicle: form.vehicle,
             concern: form.concern,
-            offerCode: selected.code,
+          offerCode: selected.code,
             marketingOptIn: form.marketingOptIn,
             utm: utm,
             page: payload.page,
             timestamp: payload.timestamp
-          }),
-        });
+        }),
+      });
 
         if (leadResponse.ok) {
           const leadResult = await leadResponse.json();
@@ -485,7 +485,7 @@ export default function ByrdsLeadMagnetPage() {
       {/* Animated Grid Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,140,0,0.1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,140,0,0.1)_1px,transparent_1px)] bg-[size:50px_50px] animate-pulse"></div>
-      </div>
+            </div>
       
       {/* Floating Elements */}
       <div className="absolute top-20 left-10 w-32 h-32 bg-orange-500/10 rounded-full blur-xl animate-bounce"></div>
@@ -493,7 +493,7 @@ export default function ByrdsLeadMagnetPage() {
       <div className="absolute bottom-20 left-1/4 w-40 h-40 bg-yellow-500/5 rounded-full blur-2xl animate-pulse"></div>
       
       <header className="relative z-50 border-b border-orange-500/20 bg-black/90 backdrop-blur-2xl">
-        <div className="mx-auto flex h-16 md:h-24 max-w-7xl items-center justify-between px-4 md:px-8">
+        <div className="mx-auto flex h-16 md:h-24 max-w-7xl items-center justify-between px-4 md:px-8 sticky top-0 z-50">
           <div className="flex items-center gap-3 md:gap-6">
             <div className="relative group">
               <div className="grid h-12 w-12 md:h-20 md:w-20 place-items-center rounded-2xl md:rounded-3xl bg-gradient-to-br from-orange-500 via-orange-600 to-red-600 text-white shadow-2xl shadow-orange-500/50 group-hover:shadow-orange-500/75 transition-all duration-300">
@@ -501,18 +501,18 @@ export default function ByrdsLeadMagnetPage() {
               </div>
               <div className="absolute -top-1 -right-1 md:-top-2 md:-right-2 h-5 w-5 md:h-8 md:w-8 rounded-full bg-gradient-to-br from-green-400 to-green-500 flex items-center justify-center shadow-lg">
                 <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-white" />
-              </div>
-              <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
             </div>
+              <div className="absolute inset-0 rounded-2xl md:rounded-3xl bg-gradient-to-br from-orange-400 to-red-500 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+          </div>
             <div className="min-w-0 flex-1">
               <h1 className="text-lg md:text-3xl font-black text-white tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent truncate">
                 {CONFIG.brand.name}
               </h1>
               <div className="hidden md:flex items-center gap-4 text-sm mt-2">
-                <div className="flex items-center gap-2 bg-yellow-500/20 px-3 py-1 rounded-full">
-                  <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
-                  <span className="text-gray-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
+                <div className="flex items-center gap-2 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 px-4 py-2 rounded-full border border-yellow-400/30 shadow-lg">
+                  <Star className="h-5 w-5 fill-yellow-400 text-yellow-400 drop-shadow-sm" />
+                  <span className="font-bold text-yellow-300 text-lg">{CONFIG.trustSignals.googleRating}</span>
+                  <span className="text-yellow-200 font-medium">({CONFIG.trustSignals.totalReviews} reviews)</span>
                 </div>
                 <div className="h-5 w-px bg-gray-600"></div>
                 <span className="text-gray-300 font-medium">Since {CONFIG.brand.established}</span>
@@ -521,14 +521,15 @@ export default function ByrdsLeadMagnetPage() {
               </div>
               {/* Mobile trust signals */}
               <div className="md:hidden flex items-center gap-2 text-xs mt-1">
-                <div className="flex items-center gap-1 bg-yellow-500/20 px-2 py-1 rounded-full">
-                  <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                  <span className="font-bold text-yellow-400">{CONFIG.trustSignals.googleRating}</span>
-                </div>
+                <div className="flex items-center gap-1 bg-gradient-to-r from-yellow-500/30 to-orange-500/30 px-3 py-1 rounded-full border border-yellow-400/30 shadow-md">
+                <Star className="h-4 w-4 fill-yellow-400 text-yellow-400 drop-shadow-sm" />
+                  <span className="font-bold text-yellow-300 text-sm">{CONFIG.trustSignals.googleRating}</span>
+                  <span className="text-yellow-200 text-xs">({CONFIG.trustSignals.totalReviews})</span>
+              </div>
                 <span className="text-gray-400">•</span>
                 <span className="text-green-400 font-bold text-xs">ASE Certified</span>
-              </div>
             </div>
+          </div>
           </div>
           
           {/* Mobile CTA Button */}
@@ -549,9 +550,9 @@ export default function ByrdsLeadMagnetPage() {
               <div className="flex items-center gap-3 text-gray-200">
                 <Phone className="h-5 w-5 text-orange-400" /> 
                 <a href={`tel:${CONFIG.brand.phone}`} className="font-bold text-white hover:text-orange-400 transition-colors text-lg">
-                  {CONFIG.brand.phone}
-                </a>
-              </div>
+                {CONFIG.brand.phone}
+              </a>
+            </div>
               <div className="text-sm text-gray-400 mt-1 font-medium">{CONFIG.brand.hours}</div>
             </div>
             <a
@@ -598,7 +599,7 @@ export default function ByrdsLeadMagnetPage() {
                   <span className="sm:hidden">{CONFIG.trustSignals.customersServed}+ Customers</span>
                 </motion.div>
                 
-                <motion.h1
+              <motion.h1
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.1 }}
@@ -616,7 +617,7 @@ export default function ByrdsLeadMagnetPage() {
                   transition={{ delay: 0.2 }}
                   className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-200 leading-relaxed font-medium"
                 >
-                  Get a <span className="font-bold text-orange-400 bg-orange-500/20 px-2 py-1 rounded">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, just honest advice about what your car needs.
+                  Get a <span className="font-bold text-orange-400 bg-orange-500/20 px-2 py-1 rounded">FREE 90‑point digital inspection</span> with detailed photos and a clear vehicle health score. No pressure, No pressure, just real data and practical solutions about what your car needs.
                 </motion.p>
               </div>
 
@@ -634,14 +635,14 @@ export default function ByrdsLeadMagnetPage() {
                   <div className="min-w-0 flex-1">
                     <span className="font-bold text-white text-base md:text-lg">{CONFIG.trustSignals.warrantyMonths}‑month / {CONFIG.trustSignals.warrantyMiles.toLocaleString()}‑mile warranty</span>
                     <div className="text-sm md:text-base text-gray-300 mt-1">on all approved repairs</div>
-                  </div>
                 </div>
+                  </div>
                 <div className="flex items-center gap-4 md:gap-6 text-gray-200 bg-gray-800/50 p-4 md:p-6 rounded-2xl backdrop-blur-md border border-gray-700/50 shadow-lg">
                   <div className="flex h-12 w-12 md:h-16 md:w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-xl">
                     <ClipboardList className="h-6 w-6 md:h-8 md:w-8 text-white" />
-                  </div>
+                </div>
                   <div className="min-w-0 flex-1">
-                    <span className="font-bold text-white text-base md:text-lg">Digital photo report</span>
+                    <span className="font-bold text-white text-base md:text-lg">Digital vehicle report</span>
                     <div className="text-sm md:text-base text-gray-300 mt-1">with detailed vehicle health score</div>
                   </div>
                 </div>
@@ -667,7 +668,7 @@ export default function ByrdsLeadMagnetPage() {
                   <div className="flex items-center gap-3 md:gap-4">
                     <div className="flex h-10 w-10 md:h-14 md:w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 shadow-lg">
                       <MapPin className="h-5 w-5 md:h-7 md:w-7 text-white" />
-                    </div>
+                </div>
                     <div className="min-w-0 flex-1">
                       <div className="font-bold text-white text-base md:text-lg">Location</div>
                       <div className="text-sm md:text-base text-gray-300 mt-1">{CONFIG.brand.address}</div>
@@ -692,20 +693,20 @@ export default function ByrdsLeadMagnetPage() {
                 transition={{ delay: 0.5 }}
                 className="flex items-center gap-6"
               >
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 px-4 py-2 rounded-full border border-yellow-400/30 shadow-lg">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-6 w-6 fill-yellow-400 text-yellow-400 drop-shadow-sm" />
                   ))}
-                  <span className="text-lg font-bold text-white">
+                  <span className="text-xl font-bold text-yellow-300">
                     {CONFIG.trustSignals.googleRating}
                   </span>
-                  <span className="text-slate-300">({CONFIG.trustSignals.totalReviews} reviews)</span>
+                  <span className="text-yellow-200 font-medium">({CONFIG.trustSignals.totalReviews} reviews)</span>
                 </div>
                 <div className="h-6 w-px bg-slate-600" />
                 <div className="flex items-center gap-2 text-slate-300">
                   <Users className="h-5 w-5 text-orange-400" />
                   <span className="font-semibold">{CONFIG.trustSignals.customersServed}+ customers served</span>
-                </div>
+              </div>
               </motion.div>
             </div>
 
@@ -1012,7 +1013,7 @@ export default function ByrdsLeadMagnetPage() {
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100">
                           <ClipboardList className="h-3 w-3 text-blue-600" />
                         </div>
-                        <span>Digital photo report with detailed vehicle health score</span>
+                        <span>Digital vehicle report with detailed vehicle health score</span>
                       </div>
                       <div className="flex items-center gap-3">
                         <div className="flex h-6 w-6 items-center justify-center rounded-full bg-orange-100">

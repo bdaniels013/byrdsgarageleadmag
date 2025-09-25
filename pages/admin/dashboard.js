@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { 
   Users, 
   Mail, 
@@ -8,12 +9,15 @@ import {
   Clock, 
   AlertCircle,
   Download,
-  RefreshCw
+  RefreshCw,
+  LogOut
 } from 'lucide-react';
 
 export default function AdminDashboard() {
+  const router = useRouter();
   const [leads, setLeads] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
   const [stats, setStats] = useState({
     total: 0,
     today: 0,
@@ -23,8 +27,40 @@ export default function AdminDashboard() {
   });
 
   useEffect(() => {
-    fetchLeads();
+    checkAuth();
   }, []);
+
+  const checkAuth = async () => {
+    const token = localStorage.getItem('admin_token');
+    if (!token) {
+      router.push('/admin/login');
+      return;
+    }
+
+    try {
+      const response = await fetch('/api/admin/verify-auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token }),
+      });
+
+      if (response.ok) {
+        setAuthenticated(true);
+        fetchLeads();
+      } else {
+        localStorage.removeItem('admin_token');
+        router.push('/admin/login');
+      }
+    } catch (error) {
+      localStorage.removeItem('admin_token');
+      router.push('/admin/login');
+    }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('admin_token');
+    router.push('/admin/login');
+  };
 
   const fetchLeads = async () => {
     try {
@@ -64,6 +100,17 @@ export default function AdminDashboard() {
     window.URL.revokeObjectURL(url);
   };
 
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <RefreshCw className="h-8 w-8 animate-spin mx-auto mb-4" />
+          <p>Verifying access...</p>
+        </div>
+      </div>
+    );
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -78,9 +125,18 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Byrd's Garage - Lead Dashboard</h1>
-          <p className="text-gray-600">Monitor and manage your lead magnet campaigns</p>
+        <div className="mb-8 flex justify-between items-start">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">Byrd's Garage - Lead Dashboard</h1>
+            <p className="text-gray-600">Monitor and manage your lead magnet campaigns</p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+          >
+            <LogOut className="h-4 w-4" />
+            Logout
+          </button>
         </div>
 
         {/* Stats Cards */}

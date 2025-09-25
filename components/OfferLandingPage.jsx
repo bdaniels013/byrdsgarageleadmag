@@ -40,7 +40,7 @@ const CONFIG = {
     name: "Byrd's Garage",
     phone: "(916) 991-1079",
     email: "info@byrdsgarage.com",
-    address: "1234 Main Street, Elverta, CA 95626",
+    address: "220 Elverta Rd., Elverta, CA 95626",
     established: "2020",
     tagline: "Honest Auto Care You Can Trust",
     description: "Professional ASE-certified technicians providing honest, transparent auto care with digital inspections and clear communication.",
@@ -63,7 +63,7 @@ const ALL_OFFERS = [
     name: "FREE 90‑Point Digital Vehicle Inspection",
     icon: ClipboardList,
     short: "Comprehensive inspection with photos & vehicle health score",
-    long: "Get a FREE 90‑point digital inspection with detailed photos and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, just honest advice.",
+    long: "Get a FREE 90‑point digital inspection with detailed vehicle report and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, No pressure, just real data and practical solutions.",
     finePrint: "Visual/triage checks are not a full diagnostic. Warning‑light/drivability issues may require a $165 diagnostic.",
     cta: "Book My Free Inspection",
     value: "$89",
@@ -77,7 +77,7 @@ const ALL_OFFERS = [
       "Digital report you can keep forever"
     ],
     heroTitle: "Get Your FREE 90-Point Digital Vehicle Inspection",
-    heroSubtitle: "Comprehensive inspection with photos & clear health score - no pressure, just honest advice",
+    heroSubtitle: "Comprehensive inspection with photos & clear health score - no pressure, No pressure, just real data and practical solutions",
   },
   {
     code: "BYRD-VIS15",
@@ -104,7 +104,7 @@ const ALL_OFFERS = [
     name: "Brake Life Snapshot (FREE)",
     icon: Wrench,
     short: "Pad thickness + rotor photos—know your brake life",
-    long: "Get a FREE brake life snapshot with detailed photos of your pads and rotors. We'll estimate remaining pad thickness and add it to your digital report so you know exactly when to replace them.",
+    long: "Get a FREE brake life snapshot with detailed vehicle report of your pads and rotors. We'll estimate remaining pad thickness and add it to your digital report so you know exactly when to replace them.",
     finePrint: "If wheels must be removed for full measurement, we'll review labor first.",
     cta: "Check My Brakes",
     value: "$35",
@@ -365,8 +365,8 @@ const OfferLandingPage = ({ offerSlug }) => {
             {/* Trust Signals */}
             <div className="hidden md:flex items-center space-x-4">
               <div className="flex items-center space-x-2 bg-yellow-500/20 px-3 py-2 rounded-full">
-                <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                <span className="text-sm font-semibold text-yellow-200">
+                <Star className="h-5 w-5 text-yellow-400 fill-current drop-shadow-sm" />
+                <span className="text-lg font-bold text-yellow-300">
                   {CONFIG.trustSignals.googleRating}/5
                 </span>
               </div>
@@ -444,7 +444,7 @@ const OfferLandingPage = ({ offerSlug }) => {
               <div className="flex flex-col items-center space-y-2 p-4 md:p-6 bg-gray-800/50 rounded-2xl border border-gray-700/50 backdrop-blur-sm">
                 <Star className="h-12 w-12 md:h-16 md:w-16 text-yellow-400 fill-current" />
                 <div className="text-center">
-                  <p className="text-base md:text-lg font-bold text-yellow-200">
+                  <p className="text-lg md:text-xl font-bold text-yellow-300">
                     {CONFIG.trustSignals.googleRating}/5 Rating
                   </p>
                   <p className="text-sm md:text-base text-gray-400">

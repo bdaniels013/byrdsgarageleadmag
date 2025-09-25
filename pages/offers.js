@@ -21,7 +21,7 @@ const CONFIG = {
     name: "Byrd's Garage",
     phone: "(916) 991-1079",
     email: "info@byrdsgarage.com",
-    address: "1234 Main Street, Elverta, CA 95626",
+    address: "220 Elverta Rd., Elverta, CA 95626",
     tagline: "Honest Auto Care You Can Trust",
   },
   trustSignals: {
@@ -41,7 +41,7 @@ const OFFERS = [
     name: "FREE 90‑Point Digital Vehicle Inspection",
     icon: ClipboardList,
     short: "Comprehensive inspection with photos & vehicle health score",
-    long: "Get a FREE 90‑point digital inspection with detailed photos and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, just honest advice.",
+    long: "Get a FREE 90‑point digital inspection with detailed vehicle report and a clear vehicle health score. We'll identify what needs immediate attention vs. what can wait—no pressure, No pressure, just real data and practical solutions.",
     value: "$89",
     popular: true,
     slug: "free-90-point-inspection",
@@ -76,7 +76,7 @@ const OFFERS = [
     name: "Brake Life Snapshot (FREE)",
     icon: Wrench,
     short: "Pad thickness + rotor photos—know your brake life",
-    long: "Get a FREE brake life snapshot with detailed photos of your pads and rotors. We'll estimate remaining pad thickness and add it to your digital report so you know exactly when to replace them.",
+    long: "Get a FREE brake life snapshot with detailed vehicle report of your pads and rotors. We'll estimate remaining pad thickness and add it to your digital report so you know exactly when to replace them.",
     value: "$35",
     slug: "free-brake-check",
     url: "/free-brake-check",
@@ -154,6 +154,15 @@ export default function OffersPage() {
             </div>
 
             <div className="hidden md:flex items-center space-x-4">
+              <a
+                href="/admin/login"
+                className="flex items-center gap-2 rounded-full bg-gray-700/50 px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-600/50 transition-all duration-300 border border-gray-600/50"
+              >
+                <svg className="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+                Admin
+              </a>
               <div className="flex items-center space-x-2 bg-yellow-500/20 px-3 py-2 rounded-full">
                 <Star className="h-4 w-4 text-yellow-400 fill-current" />
                 <span className="text-sm font-semibold text-yellow-200">
@@ -185,7 +194,7 @@ export default function OffersPage() {
             </h1>
             
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
-              Professional auto care services, completely free. No strings attached, no pressure, just honest advice.
+              Professional auto care services, completely free. No strings attached, no pressure, No pressure, just real data and practical solutions.
             </p>
 
             {/* Trust Signals */}
